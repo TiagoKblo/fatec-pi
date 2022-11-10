@@ -91,6 +91,7 @@
         padding-top: 1rem;
         padding-bottom: 1rem;
     }
+
     #cabecalho .container {
         flex-direction: column;
         align-items: center;

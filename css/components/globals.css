@@ -38,16 +38,34 @@ body {
     }
 }
 
-.botao {
+.btn {
     background-color: var(--branco);
     border: 1px solid var(--azul);
     padding: 1rem;
     border-radius: 11px;
 }
 
-.botao.botao-primario {
+.btn.btn-primary {
     background-color: var(--azul);
     border: none;
     color: var(--branco);
 }
 
+.input-group {
+    position: relative;
+}
+
+.input-group label {
+    position: absolute;
+    padding: 1.6rem 0 0 2rem;
+    font-weight: bold;
+    text-transform: lowercase;
+}
+
+.input-group label::after {
+    content: ": ";
+}
+
+.unlabeled-group {
+    text-align: center;
+}
