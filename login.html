@@ -5,18 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <h1> LOGIN </h1>
+    <h1> Tela de login </h1>
     <form action="login.html" method="POST"
-     enctype="multipart/form-data"></form>
-     <label for="email">E-mail</label>
-     <input type="email" name="email" id="email"
-      placeholder="seuemail@escreveaqui.com.br"><br>
-      <label for="senha">Senha</label>
-	 <input type="password" name="senha" id="senha"><br>
-     <input type="checkbox" name="linguagens" value="Java">JAVA
-	 <input type="checkbox" name="linguagens" value="php">PHP
-	 <input type="checkbox" name="linguagens" value="Perl">Perl<br> 
+     enctype="multipart/form-data">
+     <p>
+        <a href="#" class="botao ">Login</a>
+        <a href="#" class="botao">Cadastrar</a>
+    </p>
+    <p>
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email"
+      placeholder="seuemail@escreveaqui.com.br">
+    </p>
+    <p>
+        <label for="senha">Senha</label>
+	    <input type="password" name="senha" id="senha">
+    </p>
+    <p><input type="checkbox" name="lembrar_senha">Lembrar senha</p>
+    <p><input type="submit" value="Entrar"></p>
+    </form>
 </body>
 </html>
