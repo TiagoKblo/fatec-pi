@@ -48,6 +48,11 @@ Cores:
 
 ![Cores Padronizadas FATEC](./docs/img/cores_cps.png "Centro Paula Souza - Identidade Visual - Cores")
 
+Vermelho: #B11116
+Azul: #3A5461
+Preto: #000
+Branco: #FFF
+
 ### Página Inicial
 
 Visando simplificar as etapas de pesquisa e filtro dos editais disponíveis na FATEC,
