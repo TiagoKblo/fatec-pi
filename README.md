@@ -29,6 +29,7 @@ Naquilo que condiz a marca FATEC ou CPS, é estritamente necessário seguir
 a [identidade visual do Centro Paula Souza](https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/05/manual_centro_paula_souza_gestao2019_atualizado_mes05.pdf)
 
 Cores:
+
 ![Cores Padronizadas FATEC](./docs/img/cores_padronizadas_cps.png "Centro Paula Souza - Identidade Visual - Cores")
 
 ### Página Inicial
