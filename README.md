@@ -11,7 +11,7 @@ que combina a teoria e a prática, principal modelo da instituição.
     - [x] Página Inicial
     - [x] Página de Cadastro
     - [x] Página de Login
-    - [] Página de Envio de Interesse (Candidatura)
+    - [ ] Página de Envio de Interesse (Candidatura)
 - [ ] Desenvolver Página Inicial
 - [ ] Separar conceitos da página inicial que são aplicavéis em todo projeto
 - [ ] Criação da página de Login
