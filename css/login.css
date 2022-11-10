@@ -1,8 +1,6 @@
-
-
+/* Estilos Especifícos da Tela de Login */
 .botao
 {
-
     border: solid 1px #084d6e;
     color: #084d6e;
     padding: 16px 32px 16px 32px;
@@ -13,11 +11,6 @@
     top: 432px;
     border-radius: 25px;
     background-color: #084d6e;
-
-
-
-
-
 }
 
 
