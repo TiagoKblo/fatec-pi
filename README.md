@@ -30,7 +30,7 @@ a [identidade visual do Centro Paula Souza](https://bkpsitecpsnew.blob.core.wind
 
 Cores:
 
-![Cores Padronizadas FATEC](./docs/img/cores_padronizadas_cps.png "Centro Paula Souza - Identidade Visual - Cores")
+![Cores Padronizadas FATEC](./docs/img/cores_cps.png "Centro Paula Souza - Identidade Visual - Cores")
 
 ### Página Inicial
 
