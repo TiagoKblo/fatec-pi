@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro.css" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" >
+        <a class="links" id="paracadastro"></a>
+        <a class="links" id="paralogin"></a>
+        
+        <div class="content">      
+         
+          <!--FORMULÁRIO DE CADASTRO-->
+          <div id="cadastro">
+            <form method="post" action=""> 
+              <h1>Cadastro</h1> 
+              
+              <p> 
+                <label for="nome_cad">Nome</label>
+                <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="Carlos Paula" />
+              </p>
+              
+              <p> 
+                <label for="email_cad">E-mail</label>
+                <input id="email_cad" name="email_cad" required="required" type="email" placeholder="email@email.com"/> 
+              </p>
+              
+              <p> 
+                <label for="senha_cad">Sua senha</label>
+                <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="1234"/>
+              </p>
+
+              <p> 
+                <label for="cpf_cad">CPF</label>
+                <input id="cpf_cad" name="cpf_cad" required="required" type="cpf" placeholder="123.456.789-0"/> 
+              </p>
+
+              <p> 
+                <label for="matricula_cad">ID Matricula</label>
+                <input id="matricula_cad" name="matricula_cad" required="required" type="matricula" placeholder=""/> 
+              </p>
+              
+              
+              <p> 
+                <input type="submit" value="Cadastrar"/> 
+              </p>
+              
+              <p class="link">  
+                Já tem conta?
+                <a href="#paralogin"> Ir para Login </a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div> 
+</body>
+</html>
