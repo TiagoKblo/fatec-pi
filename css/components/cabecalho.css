@@ -1,0 +1,104 @@
+#cabecalho form {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--cinza);
+}
+
+.autenticar li {
+    display: inline-block;
+    list-style: none;
+    padding: 1rem 1.5rem;
+}
+
+.autenticar .login {
+    background-color: var(--azul);
+    border-radius: 11px;
+}
+
+.autenticar .login a {
+    color: var(--branco);
+    text-decoration: none;
+}
+
+.pesquisa {
+    margin: 0 auto;
+}
+
+.pesquisa input[type="search"] {
+    border: none;
+    background: var(--cinza);
+    margin: 0;
+    padding: .5rem 2rem;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: 11px 0 0 11px;
+    min-width: 30vw;
+}
+
+.pesquisa input[type="search"]::placeholder {
+    color: #bbb;
+}
+
+.pesquisa input[type="search"],
+.pesquisa button[type="submit"] {
+    display: inline-block;
+    min-height: 4.25rem;
+    font-size: 1rem;
+}
+
+.pesquisa button[type="submit"] {
+    display: inline-block;
+    text-indent: -999px;
+    overflow: hidden;
+    width: 4rem;
+    padding: 6px;
+    margin: 0 0 0 -6px;
+    border: 1px solid transparent;
+    border-radius: 0 11px 11px 0;
+    background: var(--cinza) url("../../img/icons/icon-pesquisa.svg") no-repeat center;
+    cursor: pointer;
+    opacity: 1;
+    transition: filter .2s ease-out;
+}
+
+.pesquisa button[type="submit"]:hover {
+    filter: brightness(0.9);
+}
+
+.pesquisa button[type="submit"]:focus,
+.pesquisa input[type="search"]:focus {
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-color: var(--azul);
+    outline: none;
+}
+
+#cabecalho .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo img {
+    max-width: 142px;
+}
+
+@media (max-width: 850px) {
+    #cabecalho form {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    #cabecalho .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pesquisa {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+}

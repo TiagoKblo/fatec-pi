@@ -1,0 +1,52 @@
+@import url("https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css");
+
+:root {
+    --preto: #000;
+    --branco: #fff;
+    --vermelho: #B11116;
+    --azul: #3A5461;
+    --cinza: #EBEFF1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Verdana', sans-serif;
+    color: var(--preto);
+}
+
+body {
+    background: var(--branco);
+    color: var(--preto);
+}
+
+.container {
+    width: 60vw;
+    margin: 0 auto;
+}
+
+@media (max-width: 1600px) {
+    .container {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 960px) {
+    .container {
+        width: 90vw;
+    }
+}
+
+.botao {
+    background-color: var(--branco);
+    border: 1px solid var(--azul);
+    padding: 1rem;
+    border-radius: 11px;
+}
+
+.botao.botao-primario {
+    background-color: var(--azul);
+    border: none;
+    color: var(--branco);
+}
