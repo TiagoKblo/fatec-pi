@@ -3,6 +3,22 @@
 Projeto semestral da FATEC Itapira, modelo de projeto interdisciplinar
 que combina a teoria e a prática, principal modelo da instituição.
 
+## Objetivos
+
+- [x] Desenvolver Caso de Uso
+    - [] Criar documentação digital da etapa
+- [-] Criação de Design das Páginas
+    - [x] Página Inicial
+    - [x] Página de Cadastro
+    - [x] Página de Login
+    - [] Página de Envio de Interesse (Candidatura)
+- [] Desenvolver Página Inicial
+- [] Separar conceitos da página inicial que são aplicavéis em todo projeto
+- [] Criação da página de Login
+    - [] Integração das outras páginas com o login
+- [] Criação da página de Cadastro
+    - [] Integração das outras páginas com o Cadastro
+
 ## 💭 Proposta de Trabalho
 
 A proposta é reunir em um único site todo ou parcialmente
