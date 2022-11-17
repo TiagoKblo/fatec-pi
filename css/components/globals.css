@@ -21,23 +21,6 @@ body {
     color: var(--preto);
 }
 
-.container {
-    width: 60vw;
-    margin: 0 auto;
-}
-
-@media (max-width: 1600px) {
-    .container {
-        width: 80vw;
-    }
-}
-
-@media (max-width: 960px) {
-    .container {
-        width: 90vw;
-    }
-}
-
 .btn {
     background-color: var(--branco);
     border: 1px solid var(--azul);
@@ -68,4 +51,11 @@ body {
 
 .unlabeled-group {
     text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: 0 auto;
 }

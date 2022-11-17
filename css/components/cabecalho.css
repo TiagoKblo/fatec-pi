@@ -1,11 +1,13 @@
 #cabecalho {
     padding-top: 3rem;
     padding-bottom: 3rem;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     border-bottom: 1px solid var(--cinza);
+}
+
+
+#cabecalho .container {
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .autenticar {
@@ -89,20 +91,15 @@
     outline: none;
 }
 
-#cabecalho .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .logo img {
     max-width: 142px;
 }
 
 @media (max-width: 850px) {
     #cabecalho form {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        width: 60vw;
     }
 
     #cabecalho .container {
@@ -110,9 +107,15 @@
         align-items: center;
     }
 
-    .pesquisa {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+    .pesquisa input[type="search"] {
+        border-radius: 11px;
+        width: 100%;
     }
 
+    .pesquisa button[type="submit"] {
+        margin: 0;
+        margin-top: 1rem;
+        width: 100%;
+        border-radius: 11px;
+    }
 }
