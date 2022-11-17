@@ -32,16 +32,14 @@
 }
 
 .pesquisa {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     flex-grow: 2;
     margin: 0 auto;
 }
 
 .pesquisa form {
-    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .pesquisa input[type="search"] {
@@ -97,6 +95,7 @@
 
 @media (max-width: 850px) {
     #cabecalho form {
+        display: inline-block;
         margin-top: 2rem;
         margin-bottom: 2rem;
         width: 60vw;
