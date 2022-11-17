@@ -1,4 +1,4 @@
-#cabecalho form {
+#cabecalho {
     padding-top: 3rem;
     padding-bottom: 3rem;
 
@@ -6,6 +6,11 @@
     flex-direction: column;
     justify-content: space-around;
     border-bottom: 1px solid var(--cinza);
+}
+
+.autenticar {
+    display: flex;
+    align-items: center;
 }
 
 .autenticar li {
@@ -25,7 +30,16 @@
 }
 
 .pesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-grow: 2;
     margin: 0 auto;
+}
+
+.pesquisa form {
+    width: 80%;
 }
 
 .pesquisa input[type="search"] {
@@ -36,7 +50,7 @@
     color: inherit;
     border: 1px solid transparent;
     border-radius: 11px 0 0 11px;
-    min-width: 30vw;
+    width: 80%;
 }
 
 .pesquisa input[type="search"]::placeholder {
@@ -45,7 +59,6 @@
 
 .pesquisa input[type="search"],
 .pesquisa button[type="submit"] {
-    display: inline-block;
     min-height: 4.25rem;
     font-size: 1rem;
 }

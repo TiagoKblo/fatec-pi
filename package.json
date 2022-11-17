@@ -1,0 +1,21 @@
+{
+  "name": "fatec-pi",
+  "version": "1.0.0",
+  "description": "Projeto semestral da FATEC Itapira, modelo de projeto interdisciplinar que combina a teoria e a prática, principal modelo da instituição.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiagoKblo/fatec-pi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TiagoKblo/fatec-pi/issues"
+  },
+  "homepage": "https://github.com/TiagoKblo/fatec-pi#readme"
+}

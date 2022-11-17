@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Editais - Página Inicial</title>
+    <!-- FavIcons -->
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://fatweb.s3.amazonaws.com/vestibularfatec/assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://fatweb.s3.amazonaws.com/vestibularfatec/assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://fatweb.s3.amazonaws.com/vestibularfatec/assets/img/favicon/favicon-16x16.png">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
     <!-- Cabeçalho Principal -->
     <header id="cabecalho">
-        <form action="#" method="GET">
-            <section class="container">
-                <a class="logo" href="index.html"><img src="img/logo_fatec/logo_fatec_cor.png" alt="Fatec Itapira"></a>
-                <div class="pesquisa">
+        <section class="container">
+            <!-- Logo/Brand da FATEC -->
+            <a class="logo" href="index.html"><img src="img/logo_fatec/logo_fatec_cor.png" alt="Fatec Itapira"></a>
+
+            <!-- Caixa de Pesquisa -->
+            <div class="pesquisa">
+                <form action="#" method="GET">
                     <input type="search" class="caixa-pesquisa" placeholder="Pesquisar Cargos ou Fatecs">
                     <button type="submit">Pesquisar</button>
-                </div>
+                </form>
+            </div>
 
-                <ul class="autenticar">
-                    <li class="cadastrar"><a href="cadastro.html">Cadastre-se</a></li>
-                    <li class="login"><a href="login.html">Login</a></li>
-                </ul>
-            </section>
-        </form>
+            <!-- Botões de Autenticação e Perfil -->
+            <ul class="autenticar">
+                <li class="cadastrar"><a href="cadastro.html">Cadastre-se</a></li>
+                <li class="login"><a href="login.html">Login</a></li>
+            </ul>
+        </section>
     </header>
     <!-- FIM Cabeçalho Principal -->
+
+    <!-- Scripts -->
+    <script defer src="js/main.js"></script>
 </body>
+
 </html>
