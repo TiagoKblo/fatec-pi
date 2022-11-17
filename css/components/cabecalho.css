@@ -84,8 +84,6 @@
 
 .pesquisa button[type="submit"]:focus,
 .pesquisa input[type="search"]:focus {
-    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
-    border-color: var(--azul);
     outline: none;
 }
 
