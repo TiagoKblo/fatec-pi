@@ -1,8 +1,8 @@
 @import url("https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css");
 
 :root {
-    --preto: #000;
-    --branco: #fff;
+    --preto: #2f2f2f;
+    --branco: #ffffff;
     --vermelho: #B11116;
     --azul: #3A5461;
     --cinza: #EBEFF1;
