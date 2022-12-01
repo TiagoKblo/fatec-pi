@@ -6,21 +6,21 @@ que combina a teoria e a prática, principal modelo da instituição.
 ## Objetivos
 
 - [x] Desenvolver PM Canvas
-- [ ] Análise de Requisitos
-- [ ] Telas de Figma
+- [x] Análise de Requisitos
+- [x] Telas de Figma
 - [ ] Implementação Front-End (HTML, CSS e JavaScript)
 - [ ] Diagrama de Caso de Uso
-- [ ] Desenvolver Documentos de Requisitos Funcionais e Não Funcionais
+- [x] Desenvolver Documentos de Requisitos Funcionais e Não Funcionais
     - [ ] Cadastrar:
         - [ ] Usuários (Professores, Administrador, Coordenadores)
         - [ ] Editais
-        - [ ] Documentos Comprobatórios 
+        - [ ] Documentos Comprobatórios
     - [ ] Gerar reetificação de editais através de documentos de portaria
     - [ ] Gerenciar:
         - [ ] Usuários (Professores, Administrador, Coordenadores)
         - [ ] Editais
 - [ ] Diagrama de Classes
- 
+
 ## 💭 Proposta de Trabalho
 
 A proposta é reunir em um único site todo ou parcialmente
