@@ -22,6 +22,10 @@
     line-height: 24px;
 }
 
+.card .vaga .conteudo {
+    height: 200px;
+}
+
 .card .vaga .btn {
     position: absolute;
     bottom: 2rem;
@@ -36,4 +40,14 @@
 .card .vaga time {
     margin-left: 1rem;
     font-style: normal;
+}
+
+@media (max-width: 850px) {
+    .card .vaga footer {
+        position: static;
+    }
+    .card .vaga .btn {
+        padding: .5rem;
+        margin-left: 1rem;
+    }
 }
