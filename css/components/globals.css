@@ -86,17 +86,3 @@ body {
     align-items: center;
 }
 
-#go-top {
-    display: block;
-    border-radius: 100% 100%;
-    width: 72px;
-    height: 72px;
-    /* background-color: var(--vermelho);    */
-    background-image: url(../../img/seta-cima.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    text-indent: -999999px;
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-}
