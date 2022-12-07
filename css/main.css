@@ -6,3 +6,9 @@
 
 /* Cabeçalho */
 @import url("./components/cabecalho.css");
+
+/* Rodapé */
+@import url('./components/rodape.css');
+
+/* Headerbar */
+@import url('./components/headerbar.css');

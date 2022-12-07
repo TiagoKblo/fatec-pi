@@ -1,6 +1,6 @@
 #cabecalho {
     padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-bottom: 0;
     border-bottom: 1px solid var(--cinza);
 }
 
@@ -115,4 +115,21 @@
         width: 100%;
         border-radius: 11px;
     }
+}
+
+.filtros {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.filtros select:not(:first-child) {
+    margin-left: 2rem;
+}
+
+.filtros .btn {
+    padding: .5rem 1rem;
 }

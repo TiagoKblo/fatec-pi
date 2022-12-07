@@ -1,0 +1,16 @@
+.top-footer {
+    background-color: var(--azul);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+
+.bottom-footer {
+    background-color: var(--preto);
+}
+
+.bottom-footer p {
+    padding: 1rem 0;
+    color: var(--branco);
+    text-align: center;
+}
