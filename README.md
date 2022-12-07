@@ -51,7 +51,7 @@ Cores:
 
 Vermelho: #B11116
 Azul: #3A5461
-Preto: #000
+Preto: #2f2f2f
 Branco: #FFF
 
 ### Página Inicial
