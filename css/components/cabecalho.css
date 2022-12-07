@@ -91,7 +91,34 @@
     max-width: 142px;
 }
 
+
+.filtros {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.filtros select:not(:first-child) {
+    margin-left: 2rem;
+}
+
+.filtros .btn {
+    padding: .5rem 1rem;
+}
+
 @media (max-width: 850px) {
+    .filtros {
+        flex-direction: column;
+    }
+
+    .filtros select, .filtros select:not(:first-child) {
+        margin: .5rem 0;
+        text-align: center;
+    }
+
     #cabecalho form {
         display: inline-block;
         margin-top: 2rem;
@@ -117,19 +144,3 @@
     }
 }
 
-.filtros {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.filtros select:not(:first-child) {
-    margin-left: 2rem;
-}
-
-.filtros .btn {
-    padding: .5rem 1rem;
-}
