@@ -40,3 +40,22 @@
     border: 0;
     padding-top: 0;
 }
+
+.input-fatec-group {
+    position: relative;
+}
+
+.input-fatec-group label {
+    position: absolute;
+    padding: 1.6rem 0 0 2rem;
+    font-weight: bold;
+    text-transform: lowercase;
+}
+
+.input-fatec-group label::after {
+    content: ": ";
+}
+
+.unlabeled-group {
+    text-align: center;
+}
