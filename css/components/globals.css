@@ -59,3 +59,13 @@
 .unlabeled-group {
     text-align: center;
 }
+
+a {
+    color: var(--azul);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--azul);
+    text-decoration: underline;
+}

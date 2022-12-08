@@ -13,15 +13,6 @@
     padding: 1rem 1.5rem;
 }
 
-.autenticar .cadastrar a {
-    color: var(--azul);
-    text-decoration: none;
-}
-
-.autenticar .cadastrar a:hover {
-    text-decoration: underline;
-}
-
 .autenticar .login {
     background-color: var(--azul);
     border-radius: 11px;
