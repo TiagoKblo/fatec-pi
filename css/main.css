@@ -1,14 +1,8 @@
-/* Fontes Externas */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
-/* Estilos globais da aplicação */
+/* Bootstrap */
+@import url("./components/bootstrap/css/bootstrap.min.css");
+/* Globals */
 @import url("./components/globals.css");
-
-/* Cabeçalho */
-@import url("./components/cabecalho.css");
-
-/* Rodapé */
-@import url('./components/rodape.css');
-
-/* Headerbar */
-@import url('./components/headerbar.css');
+/* Header */
+@import url("./components/header.css");
+/* Footer */
+@import url("./components/footer.css");

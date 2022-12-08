@@ -1,24 +1,25 @@
 #cabecalho {
-    padding-top: 3rem;
-    padding-bottom: 0;
     border-bottom: 1px solid var(--cinza);
-}
-
-
-#cabecalho .container {
-    flex-direction: row;
-    justify-content: space-between;
+    padding: 1rem 0;
 }
 
 .autenticar {
-    display: flex;
-    align-items: center;
+    margin: 0;
 }
 
 .autenticar li {
     display: inline-block;
     list-style: none;
     padding: 1rem 1.5rem;
+}
+
+.autenticar .cadastrar a {
+    color: var(--azul);
+    text-decoration: none;
+}
+
+.autenticar .cadastrar a:hover {
+    text-decoration: underline;
 }
 
 .autenticar .login {
@@ -32,14 +33,10 @@
 }
 
 .pesquisa {
-    flex-grow: 2;
-    margin: 0 auto;
-}
-
-.pesquisa form {
-    display: flex;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
+    padding-left: 2rem;
 }
 
 .pesquisa input[type="search"] {
@@ -50,7 +47,7 @@
     color: inherit;
     border: 1px solid transparent;
     border-radius: 11px 0 0 11px;
-    width: 80%;
+    width: 100%;
 }
 
 .pesquisa input[type="search"]::placeholder {
@@ -91,56 +88,25 @@
     max-width: 142px;
 }
 
-
 .filtros {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem
 }
 
-.filtros select:not(:first-child) {
-    margin-left: 2rem;
+.filtros select {
+    margin: 0 1rem;
+    transition: color 0.5s all;
 }
 
-.filtros .btn {
-    padding: .5rem 1rem;
+.filtros select:first-child {
+    margin-left: 0;
 }
 
-@media (max-width: 850px) {
-    .filtros {
-        flex-direction: column;
-    }
-
-    .filtros select, .filtros select:not(:first-child) {
-        margin: .5rem 0;
-        text-align: center;
-    }
-
-    #cabecalho form {
-        display: inline-block;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        width: 60vw;
-    }
-
-    #cabecalho .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .pesquisa input[type="search"] {
-        border-radius: 11px;
-        width: 100%;
-    }
-
-    .pesquisa button[type="submit"] {
-        margin: 0;
-        margin-top: 1rem;
-        width: 100%;
-        border-radius: 11px;
-    }
+.filtros select:last-child {
+    margin-right: 0;
 }
 
+@media (max-width: 960px) {
+    .pesquisa, .filtros {
+        display: none !important;
+    }
+}
