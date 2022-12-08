@@ -24,6 +24,7 @@
     background-color: var(--branco) !important;
     border: 1px solid var(--azul) !important;
     color: var(--azul) !important;
+    border-radius: 11px !important;
 }
 
 .card {
