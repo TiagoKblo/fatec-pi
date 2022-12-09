@@ -14,6 +14,10 @@
     color: var(--preto);
 }
 
+.card-text {
+    text-align: justify;
+}
+
 .btn,
 .form-select:hover,
 .form-select:active,
