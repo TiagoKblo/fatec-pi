@@ -13,12 +13,11 @@ h1 {
 
 main form ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 main ul li {
     list-style: none;
-    margin-left: 2rem;
 }
 
 main ul li a {
