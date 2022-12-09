@@ -1,13 +1,14 @@
+
 .cps-logo {
     background-color: var(--azul);
     padding: 1rem;
 }
 
 .cps-copy {
-    background-color: var(--preto);
-    color: #ccc;
+    background-color: var(--branco);
+    color: var(--preto);
     font-size: 0.8rem;
-    padding: 1rem;
+    padding: 2rem;
     text-align: center;
     margin: 0;
 }
