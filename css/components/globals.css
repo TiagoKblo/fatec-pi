@@ -14,7 +14,10 @@
     color: var(--preto);
 }
 
-.btn {
+.btn,
+.form-select:hover,
+.form-select:active,
+.form-select:focus {
     background-color: var(--branco);
     border: 1px solid var(--azul);
     color: var(--azul);
