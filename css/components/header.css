@@ -101,3 +101,10 @@
         display: none !important;
     }
 }
+
+@media (max-width: 440px) {
+    .autenticar {
+        display: flex;
+        flex-direction: column;
+    }
+}
