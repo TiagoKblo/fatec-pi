@@ -1,5 +1,5 @@
 #principal {
-    background: var(--azul) url("../img/cover-headerline.png");
+    background: var(--azul) url("../img/cover-headerline.png") no-repeat;
     padding-bottom: 2rem;
 }
 
