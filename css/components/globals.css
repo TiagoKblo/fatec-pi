@@ -14,17 +14,23 @@
     color: var(--preto);
 }
 
-.btn.btn-primary {
-    background-color: var(--azul) !important;
-    border: none !important;
-    color: var(--branco) !important;
+.btn {
+    background-color: var(--branco);
+    border: 1px solid var(--azul);
+    color: var(--azul);
+    border-radius: 11px;
 }
 
-.btn {
-    background-color: var(--branco) !important;
-    border: 1px solid var(--azul) !important;
-    color: var(--azul) !important;
-    border-radius: 11px !important;
+.btn.btn-primary {
+    background-color: var(--azul);
+    border: none;
+    color: var(--branco);
+}
+
+.btn.btn-danger {
+    background-color: var(--vermelho);
+    color: var(--branco);
+    border: none;
 }
 
 .card {
@@ -33,7 +39,6 @@
     border-radius: 21px;
     padding-bottom: .5rem;
 }
-
 
 .card-footer {
     background-color: transparent;
@@ -68,4 +73,21 @@ a {
 a:hover {
     color: var(--azul);
     text-decoration: underline;
+}
+
+.arquivo {
+    padding: 1rem 0 1rem 1rem;
+    background-color: #EBEFF1;
+    border: none;
+}
+
+.arquivo::after {
+    content: "";
+    padding-left: 2rem;
+    padding-right: 1rem;
+    background-color: #EBEFF1;
+    background-image: url("../../img/icons/pdf.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
