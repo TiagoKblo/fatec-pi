@@ -81,3 +81,14 @@ a:hover {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.labeled {
+    margin: .5rem 0;
+    padding: .5rem;
+    background-color: #EBEFF1;
+}
+
+
+input[type='radio']::after {
+    background-color: #EBEFF1 !important;
+}
