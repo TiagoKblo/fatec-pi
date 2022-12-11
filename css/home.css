@@ -19,8 +19,18 @@
 .card {
     max-width: 860px;
     width: 100%;
+    position: relative;
 }
 
+.fatec-logo {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.fatec-logo img {
+    width: 100px;
+}
 
 .card:not(:first-child) {
     margin-top: 2rem;
