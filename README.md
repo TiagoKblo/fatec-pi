@@ -8,7 +8,7 @@ que combina a teoria e a prática, principal modelo da instituição.
 - [x] Desenvolver PM Canvas
 - [x] Análise de Requisitos
 - [x] Telas de Figma
-- [ ] Implementação Front-End (HTML, CSS e JavaScript)
+- [X] Implementação Front-End (HTML, CSS e JavaScript)
 - [X] Diagrama de Caso de Uso
 - [x] Desenvolver Documentos de Requisitos Funcionais e Não Funcionais
     - [X] Cadastrar:
