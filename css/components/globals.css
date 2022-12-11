@@ -3,7 +3,9 @@
     --preto: #2f2f2f;
     --branco: #ffffff;
     --vermelho: #B11116;
+    --vermelho-claro: #d0131a;
     --azul: #3A5461;
+    --azul-claro: #3A5461dd;
     --cinza: #EBEFF1;
 }
 
@@ -17,6 +19,17 @@
 
 .card-body .card-text {
     text-align: justify;
+}
+
+.btn.btn-primary:hover,
+.autenticar .login:hover {
+    background-color: var(--azul-claro);
+    text-decoration: none;
+}
+
+.btn.btn.btn-danger:hover {
+    background-color: var(--vermelho-claro);
+    text-decoration: none;
 }
 
 .btn,
