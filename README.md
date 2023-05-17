@@ -22,6 +22,7 @@ Um mentor (alguém que possua um pouco mais de experiência técnica) deve ser o
 responsável pelo projeto, orientar os outros alunos e trocarem experiência.
 
 Mentor: [Gabriel Almir @momentoalmir](https://github.com/momentoalmir)
+
 Sujestões realizadas:
     - trabalho via pair programing em sala
     - versiomento de código via Git
