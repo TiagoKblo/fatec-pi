@@ -3,24 +3,10 @@
 Projeto semestral da FATEC Itapira, modelo de projeto interdisciplinar
 que combina a teoria e a prática, principal modelo da instituição.
 
-## PI - 1° Semestre
+## Sumário de Semestres
 
-## Objetivos
+- [1° Semestre: README](./1-semestre/README.md).
 
-- [x] Desenvolver PM Canvas
-- [x] Análise de Requisitos
-- [x] Telas de Figma
-- [X] Implementação Front-End (HTML, CSS e JavaScript)
-- [X] Diagrama de Caso de Uso
-- [x] Desenvolver Documentos de Requisitos Funcionais e Não Funcionais
-    - [X] Cadastrar:
-        - [X] Usuários (Professores, Administrador, Coordenadores)
-        - [X] Editais
-        - [X] Documentos Comprobatórios
-    - [X] Gerar reetificação de editais através de documentos de portaria
-    - [X] Gerenciar:
-        - [X] Usuários (Professores, Administrador, Coordenadores)
-        - [X] Editais
 
 ## 💭 Proposta de Trabalho
 
