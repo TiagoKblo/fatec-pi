@@ -5,7 +5,10 @@ que combina a teoria e a prática, principal modelo da instituição.
 
 ## Sumário de Semestres
 
+### 1° Semestre
+
 - [1° Semestre: README](./1-semestre/README.md).
+- [1° Semestre: Demonstração do Site](https://tiagokblo.github.io/fatec-pi/1-semestre/)
 
 
 ## 💭 Proposta de Trabalho
