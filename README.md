@@ -25,10 +25,10 @@ Mentor: [Gabriel Almir @momentoalmir](https://github.com/momentoalmir)
 
 Sujestões realizadas:
 
-    - trabalho via pair programing em sala
-    - versiomento de código via Git
-    - orientação de principios básicos html/css
-    - criação de design conhecendo todas etapas de maturização do projeto
+- trabalho via pair programing em sala
+- versiomento de código via Git
+- orientação de principios básicos html/css
+- criação de design conhecendo todas etapas de maturização do projeto
 
 ## 🎨 Design
 
