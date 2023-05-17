@@ -23,10 +23,10 @@ responsável pelo projeto, orientar os outros alunos e trocarem experiência.
 
 Mentor: [Gabriel Almir @momentoalmir](https://github.com/momentoalmir)
 Sujestões realizadas:
-    * trabalho via pair programing em sala
-    * versiomento de código via Git
-    * orientação de principios básicos html/css
-    * criação de design conhecendo todas etapas de maturização do projeto
+    - trabalho via pair programing em sala
+    - versiomento de código via Git
+    - orientação de principios básicos html/css
+    - criação de design conhecendo todas etapas de maturização do projeto
 
 ## 🎨 Design
 
@@ -37,17 +37,7 @@ Cores:
 
 ![Cores Padronizadas FATEC](./1-semestre/docs/img/cores_cps.png "Centro Paula Souza - Identidade Visual - Cores")
 
-Vermelho: #B11116
-
-Azul: #3A5461
-
-Preto: #2f2f2f
-
-Branco: #FFF
-
-### Página Inicial
-
-Visando simplificar as etapas de pesquisa e filtro dos editais disponíveis na FATEC,
-sugerimos uma tela simplificada que reuni todo processo para encontrar vagas em uma única tela.
-
-![Página Inicial](./1-semestre/docs/img/pagina_inicial.png "Portal de Editais - Página Inicial")
+- Vermelho: #B11116
+- Azul: #3A5461
+- Preto: #2f2f2f
+- Branco: #FFF
