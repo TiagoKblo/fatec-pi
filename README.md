@@ -24,7 +24,14 @@ O primeiro semestre cabe desenvolver design e principios básicos de desenvolvim
 Um mentor (alguém que possua um pouco mais de experiência técnica) deve ser o principal
 responsável pelo projeto, orientar os outros alunos e trocarem experiência.
 
-Mentor: [Gabriel Almir @momentoalmir](https://github.com/momentoalmir)
+Mentor: [Gabriel Almir](https://github.com/momentoalmir)
+
+Equipe:
+
+- [Gabriel Almir](https://github.com/momentoalmir)
+- [Tiago Henrique de Moraes](https://github.com/TiagoKblo)
+- [Daniel Júnior](https://github.com/Judoloko)
+- [Rafael Antunes](https://github.com/RafaelAntunes2)
 
 Sujestões realizadas:
 
