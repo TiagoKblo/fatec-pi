@@ -37,8 +37,6 @@ a [identidade visual do Centro Paula Souza](https://bkpsitecpsnew.blob.core.wind
 
 Cores:
 
-![Cores Padronizadas FATEC](./1-semestre/docs/img/cores_cps.png "Centro Paula Souza - Identidade Visual - Cores")
-
 - Vermelho: #B11116
 - Azul: #3A5461
 - Preto: #2f2f2f
