@@ -1,0 +1,111 @@
+/* Header Styles */
+#cabecalho {
+    border-bottom: 1px solid var(--cinza);
+    padding: 1rem 0;
+}
+
+.autenticar {
+    margin: 0;
+}
+
+.autenticar li {
+    display: inline-block;
+    list-style: none;
+    padding: 1rem 1.5rem;
+}
+
+.autenticar .login {
+    background-color: var(--azul);
+    border-radius: 11px;
+}
+
+.autenticar .login a {
+    color: var(--branco);
+    text-decoration: none;
+}
+
+.pesquisa {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+.pesquisa input[type="search"] {
+    border: none;
+    background: var(--cinza);
+    margin: 0;
+    padding: .5rem 2rem;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: 11px 0 0 11px;
+    width: 100%;
+}
+
+.pesquisa input[type="search"]::placeholder {
+    color: #bbb;
+}
+
+.pesquisa input[type="search"],
+.pesquisa button[type="submit"] {
+    min-height: 4.25rem;
+    font-size: 1rem;
+}
+
+.pesquisa button[type="submit"] {
+    display: inline-block;
+    text-indent: -999px;
+    overflow: hidden;
+    width: 4rem;
+    padding: 6px;
+    margin: 0 0 0 -6px;
+    border: 1px solid transparent;
+    border-radius: 0 11px 11px 0;
+    background: var(--cinza) url("../../img/icons/icon-pesquisa.svg") no-repeat center;
+    cursor: pointer;
+    opacity: 1;
+    transition: filter .2s ease-out;
+}
+
+.pesquisa button[type="submit"]:hover {
+    filter: brightness(0.9);
+}
+
+.pesquisa button[type="submit"]:focus,
+.pesquisa input[type="search"]:focus {
+    outline: none;
+}
+
+.logo img {
+    max-width: 142px;
+}
+
+.filtros {
+    margin-top: 1rem
+}
+
+.filtros select {
+    margin: 0 1rem;
+    transition: color 0.5s all;
+}
+
+.filtros select:first-child {
+    margin-left: 0;
+}
+
+.filtros select:last-child {
+    margin-right: 0;
+}
+
+@media (max-width: 960px) {
+    .pesquisa, .filtros {
+        display: none !important;
+    }
+}
+
+@media (max-width: 440px) {
+    .autenticar {
+        display: flex;
+        flex-direction: column;
+    }
+}
