@@ -17,6 +17,6 @@ Route::get('/', function() {
     return view('home.index');
 });
 
-Route::get('/abacate', function() {
-    return view('home.abacate');
+Route::get('fatec', function() {
+    return view('home.cadastroedital');
 });
