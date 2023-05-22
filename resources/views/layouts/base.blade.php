@@ -12,15 +12,15 @@
     <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
     <!-- Cabeçalho Principal -->
     <header id="cabecalho">
         <section class="container d-flex align-items-center justify-content-between">
             <!-- Logo/Brand da FATEC -->
-            <a class="logo" href="index.html"><img src="img/logo_fatec/logo_fatec_cor.png" alt="Fatec Itapira"></a>
+            <a class="logo" href="/"><img src="/img/logo_fatec/logo_fatec_cor.png" alt="Fatec Itapira"></a>
 
             <!-- Caixa de Pesquisa -->
             <div class="pesquisa d-flex align-content-center">
@@ -30,8 +30,8 @@
 
             <!-- Botões de Autenticação e Perfil -->
             <ul class="autenticar">
-                <li class="cadastrar"><a href="cadastro.html">Cadastre-se</a></li>
-                <li class="login"><a href="login.html">Login</a></li>
+                <li class="cadastrar"><a href="/register">Cadastre-se</a></li>
+                <li class="login"><a href="/login">Login</a></li>
             </ul>
         </section>
 
@@ -63,7 +63,7 @@
     @yield('main')
 
     <div class="voltar-topo">
-        <a href="#principal"><img src="img/seta-cima.png" alt="Voltar ao Topo"></a>
+        <a href="#principal"><img src="/img/seta-cima.png" alt="Voltar ao Topo"></a>
     </div>
 
     <!-- Rodapé Principal -->
@@ -71,7 +71,7 @@
         <section class="cps-logo">
             <div class="container d-flex justify-content-center">
                 <!-- CPS LOGO e Governo Estado de São Paulo -->
-                <img src="img/footer-cps-logo.png" alt="Centro Paula Souza e Governo do Estado de São Paulo">
+                <img src="/img/footer-cps-logo.png" alt="Centro Paula Souza e Governo do Estado de São Paulo">
             </div>
         </section>
         <p class="cps-copy d-flex justify-content-center">Copyright © 2022 Fatec Itapira - Todos os Direitos Reservados - Desenvolvido por Equipe do Projeto Integrador da Fatec</p>
