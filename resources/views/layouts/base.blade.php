@@ -14,6 +14,10 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/home.css">
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    @vite(['resources/js/app.js'])
 </head>
 <body>
     <!-- Cabeçalho Principal -->
@@ -30,8 +34,14 @@
 
             <!-- Botões de Autenticação e Perfil -->
             <ul class="autenticar">
+            @auth
+                <li style="text-decoration: underline"><a href="/perfil">Olá <?php
+                    echo strtok(Auth::user()->name, ' ')
+                ?>!</a></li>
+            @else
                 <li class="cadastrar"><a href="/register">Cadastre-se</a></li>
                 <li class="login"><a href="/login">Login</a></li>
+            @endauth
             </ul>
         </section>
 
