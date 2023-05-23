@@ -34,9 +34,29 @@ class EditalController extends Controller
 
     public function store(Request $request)
     {
-        $edital = Edital::create($request->all());
-        $path = $request->file('anexo_edital')->store('anexo_editais');
-        $edital->anexo_edital=$path;
-        return Redirect(route('editais.show', ["editai" => $edital->id]));
+        $edital = new Edital();
+
+        $edital->numero_edital = $request->numero_edital;
+        $edital->curso = $request->curso;
+        $edital->disciplina = $request->disciplina;
+        $edital->turno = $request->turno;
+        $edital->horas_aula = $request->horas_aula;
+        $edital->dia_da_semana = $request->dia_da_semana;
+        $edital->horario_inicio = $request->horario_inicio;
+        $edital->horario_fim = $request->horario_fim;
+        $edital->prazo = $request->prazo;
+
+        // upload do arquivo anexo
+        if ($request->hasFile('anexo_edital') && $request->file('anexo_edital')->isValid()) {
+            $requestAnexo = $request->anexo_edital;
+            $extension = $requestAnexo->extension();
+            $anexoName = md5($requestAnexo->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestAnexo->move(public_path('anexos'), $anexoName);
+            $edital->anexo_edital = $anexoName;
+        }
+
+        $edital->save();
+
+        return redirect()->route('editais.show', $edital->id);
     }
 }

@@ -6,7 +6,7 @@
         <h1 class="text-center">Cadastrar Edital</h1>
         <div class="container">
             <div class="card">
-                <form action="{{ route('editais.store') }}" method="post">
+                <form action="{{ route('editais.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <h5 class="card-title">Formulário de Cadastro de Edital</h5>
@@ -40,7 +40,7 @@
                             <div class="col">
                                 <p class="mt-3">
                                     <label for="turno">Turno:</label>
-                                    <input type="radio" name="turno" id="noturno" value="Noturno">
+                                    <input type="radio" name="turno" id="noturno" value="Noturno" checked>
                                     <label for="noturno">Noturno</label>
                                     <input type="radio" name="turno" id="diurno" value="Diurno">
                                     <label for="diurno">Diurno</label>
@@ -73,12 +73,12 @@
                         <div class="form-group mt-2 row">
                             <label>Horário de Oferecimento:</label>
 
-                            <div class="col date" >
+                            <div class="col date">
                                 <p>Horário Início</p>
                                 <input type="time" class="form-control" name="horario_inicio">
                             </div>
 
-                            <div class="col date" >
+                            <div class="col date">
                                 <p>Horário Fim</p>
                                 <input type="time" class="form-control" name="horario_fim">
                             </div>
@@ -86,7 +86,7 @@
 
                         <div class="form-group mt-2">
                             <label for="prazo" class="mb-2">Prazos:</label>
-                            <input type="radio" id="prazo" name="prazo" value="determinado"> Determinado
+                            <input type="radio" id="prazo" name="prazo" value="determinado" checked> Determinado
                             <input type="radio" id="prazo" name="prazo" value="indeterminado">
                             Indeterminado
                         </div>
@@ -98,8 +98,7 @@
                     <div class="card-footer row" class="mb-2">
                         <div class="col">
                             <label for="anexar-edital" class="mb-2">Anexar Edital:</label>
-                            <input type="file" name="anexo_edital" id="anexar-edital" class="form-control labeled"
-                                accept=".pdf">
+                            <input type="file" name="anexo_edital" id="anexar-edital" class="form-control labeled">
                             <small>Selecione o arquivo do edital para anexar (.pdf).</small>
                         </div>
                         <div class="col">
