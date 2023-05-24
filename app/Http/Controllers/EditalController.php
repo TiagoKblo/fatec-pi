@@ -10,7 +10,9 @@ class EditalController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $editais = Edital::all();
+        $semana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+        return view('home.index')->with('editais', $editais)->with('semana', $semana);
     }
 
     public function create()

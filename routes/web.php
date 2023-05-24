@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home.index');
+    return redirect(route('editais.index'));
 });
 
 Route::get('/dashboard', function () {
@@ -31,4 +31,4 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('editais', EditalController::class);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
