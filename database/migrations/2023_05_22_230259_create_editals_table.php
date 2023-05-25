@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('editals', function (Blueprint $table) {
             $table->id();
             $table->string('numero_edital');
+            $table->text('descricao')->nullable();
             $table->string('curso');
             $table->string('disciplina');
             $table->string('turno');
