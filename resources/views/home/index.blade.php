@@ -5,6 +5,11 @@
     <main id="principal">
         <h1 class="text-center">Editais Abertos</h1>
         <div class="container">
+            @if (count($editais) == 0)
+                <div class="alert alert-warning" role="alert">
+                    Não há editais abertos no momento.
+                </div>
+            @endif
             @foreach ($editais as $edital)
                 <div class="card">
                     <div class="fatec-logo">
