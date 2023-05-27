@@ -1,1 +1,1 @@
-<img src="/img/logo_fatec/logo_fatec_cor.png" width="150" alt="Fatec Itapira">
+<img src="/img/logo_fatec/logo_fatec_cor.png" {{ $attributes }} alt="Fatec Itapira">
