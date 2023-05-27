@@ -18,6 +18,12 @@
                         </div>
 
                         <div class="form-group mt-2">
+                            <label for="descricao" class="mb-2">Descrição:</label>
+                            <textarea class="form-control" id="descricao" name="descricao"
+                                      placeholder="Adicione uma descrição ao edital" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
                             <label for="curso" class="mb-2">Curso:</label>
                             <select class="form-control" id="curso" name="curso" required>
                                 <optgroup label="Cursos Disponíveis">
