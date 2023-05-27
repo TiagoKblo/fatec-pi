@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $edital->disciplina }}</h5>
                     <p class="card-text"><small class="text-muted">Fatec Itapira - Edital Interno -
-                            <time>{{ $semana[$edital->dia_da_semana] }} {{ $edital->horario_inicio }} às
+                            <time>{{ $edital->dia_da_semana }} {{ $edital->horario_inicio }} às
                                 {{ $edital->horario_fim }}</time></small></p>
                     @foreach (explode("\n", $edital->descricao) as $descricao)
                         <p class="card-text">{{ $descricao }}</p>

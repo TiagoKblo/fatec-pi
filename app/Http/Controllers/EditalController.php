@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Edital;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class EditalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $editais = Edital::all();
-        $semana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
-        return view('home.index')->with('editais', $editais)->with('semana', $semana);
+        $curso = $request->query('curso');
+        $editais = Edital::where('curso', 'LIKE', "%{$curso}%")->orderBy('created_at', 'desc')->paginate(10);
+
+        foreach ($editais as $edital) {
+            $this->formatEdital($edital);
+        }
+
+        return view('home.index')->with('editais', $editais);
     }
 
     public function create()
@@ -29,9 +35,9 @@ class EditalController extends Controller
     {
         $edital = Edital::find($id);
 
-        $semana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+        $this->formatEdital($edital);
 
-        return view('editais.show')->with('edital', $edital)->with('semana', $semana);
+        return view('editais.show')->with('edital', $edital);
     }
 
     public function store(Request $request)
@@ -60,5 +66,16 @@ class EditalController extends Controller
         $edital->save();
 
         return redirect()->route('editais.show', $edital->id);
+    }
+
+    /**
+     * @param $edital
+     * @return void
+     */
+    public function formatEdital($edital): void
+    {
+        $edital->dia_da_semana = Carbon::parse($edital->dia_da_semana)->locale('pt_BR')->dayName;
+        $edital->horario_inicio = Carbon::parse($edital->horario_inicio)->format('H:i');
+        $edital->horario_fim = Carbon::parse($edital->horario_fim)->format('H:i');
     }
 }
