@@ -15,7 +15,7 @@ class EditalController extends Controller
         $editais = Edital::where('curso', 'LIKE', "%{$curso}%")->orderBy('created_at', 'desc')->paginate(10);
 
         foreach ($editais as $edital) {
-            $this->formatEdital($edital);
+            $this->formatarEdital($edital);
         }
 
         return view('home.index')->with('editais', $editais);
@@ -35,7 +35,7 @@ class EditalController extends Controller
     {
         $edital = Edital::find($id);
 
-        $this->formatEdital($edital);
+        $this->formatarEdital($edital);
 
         return view('editais.show')->with('edital', $edital);
     }
@@ -72,7 +72,7 @@ class EditalController extends Controller
      * @param $edital
      * @return void
      */
-    public function formatEdital($edital): void
+    private function formatarEdital($edital): void
     {
         $edital->dia_da_semana = Carbon::parse($edital->dia_da_semana)->locale('pt_BR')->dayName;
         $edital->horario_inicio = Carbon::parse($edital->horario_inicio)->format('H:i');
