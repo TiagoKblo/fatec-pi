@@ -65,7 +65,7 @@ class EditalController extends Controller
 
         $edital->save();
 
-        return redirect()->route('editais.show', $edital->id);
+        return to_route('editais.show', $edital->id);
     }
 
     /**
