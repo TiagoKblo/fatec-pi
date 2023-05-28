@@ -43,9 +43,9 @@
             @auth
                 <li style="text-decoration: underline">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="/perfil" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?= strtok(Auth::user()->name, ' ') ?>
-                        </button>
+                        </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="/logout">Sair</a>
                         </div>
