@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EditalController;
+use App\Http\Controllers\ManifestarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('editais', EditalController::class);
-// Route::resource('manifestar', [ManifestarController::class]);
+Route::resource('manifestar', ManifestarController::class);
 
 require __DIR__ . '/auth.php';

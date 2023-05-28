@@ -7,16 +7,15 @@
     <title>Portal de Editais - Página Inicial</title>
 
     <!-- FavIcons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/home.css">
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     @vite(['resources/js/app.js'])
 </head>
 <body>
@@ -87,5 +86,7 @@
         <p class="cps-copy d-flex justify-content-center">Copyright © 2022 Fatec Itapira - Todos os Direitos Reservados - Desenvolvido por Equipe do Projeto Integrador da Fatec</p>
     </footer>
     <!-- FIM Rodapé Principal -->
+
+    @yield('scripts')
 </body>
 </html>

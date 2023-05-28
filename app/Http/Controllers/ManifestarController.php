@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edital;
 use Illuminate\Http\Request;
 
 class ManifestarController extends Controller
@@ -14,12 +15,27 @@ class ManifestarController extends Controller
         //
     }
 
+    /*
+     * Tela de criação de manifestação
+     */
+    public function create(Request $request)
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        $id = $request->query('id_edital');
+        $edital = Edital::findOrFail($id);
+
+        return view('manifestar.create')->with('edital', $edital);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        echo "Manifestou!!!";
     }
 
     /**
