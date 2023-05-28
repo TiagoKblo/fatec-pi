@@ -4,24 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Edital;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class EditalController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request) : View
     {
         $curso = $request->query('curso');
-        $editais = Edital::where('curso', 'LIKE', "%{$curso}%")->orderBy('created_at', 'desc')->paginate(10);
-
-        foreach ($editais as $edital) {
-            $this->formatarEdital($edital);
-        }
+        $editais = Edital::where('curso', 'LIKE', "%$curso%")->orderBy('created_at', 'desc')->paginate(10);
 
         return view('home.index')->with('editais', $editais);
     }
 
-    public function create()
+    public function create() : View | RedirectResponse
     {
         // checar se o usuário está logado
         if (!auth()->check()) {
@@ -31,16 +28,14 @@ class EditalController extends Controller
         return view('editais.create');
     }
 
-    public function show(int $id)
+    public function show(int $id) : View
     {
         $edital = Edital::find($id);
-
-        $this->formatarEdital($edital);
 
         return view('editais.show')->with('edital', $edital);
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
         $edital = new Edital();
 
@@ -68,14 +63,4 @@ class EditalController extends Controller
         return to_route('editais.show', $edital->id);
     }
 
-    /**
-     * @param $edital
-     * @return void
-     */
-    private function formatarEdital($edital): void
-    {
-        $edital->dia_da_semana = Carbon::parse($edital->dia_da_semana)->locale('pt_BR')->dayName;
-        $edital->horario_inicio = Carbon::parse($edital->horario_inicio)->format('H:i');
-        $edital->horario_fim = Carbon::parse($edital->horario_fim)->format('H:i');
-    }
 }

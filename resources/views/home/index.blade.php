@@ -18,8 +18,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $edital->disciplina }}</h5>
                         <p class="card-text"><small class="text-muted">Fatec Itapira - Edital Interno -
-                                <time>{{ $edital->dia_da_semana }}  {{ $edital->horario_inicio }} às
-                                    {{ $edital->horario_fim }}</time></small></p>
+                                <time>{{ $edital->getDiaDaSemana() }}  {{ $edital->getHorarioInicio() }} às
+                                    {{ $edital->getHorarioFim() }}</time></small></p>
                         <p class="card-text">Saber da importância dos estoques nas empresas e como sua eficiência pode
                             impactar no lucro da organização. Desenvolver as habilidades de tomada de decisão na gestão dos
                             recursos materiais.</p>
