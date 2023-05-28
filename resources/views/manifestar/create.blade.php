@@ -6,7 +6,11 @@
     <h1 class="text-center">Manifestação de Interesse</h1>
     <div class="container">
         <div class="card">
-            <form action="{{ to_route('manifestar.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('manifestar.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+
+                <input type="hidden" name="id_edital" value="{{ $edital->id }}">
+
                 <div class="card-body">
                     <h5 class="card-title">Formulário de Manifestação</h5>
 
@@ -18,14 +22,14 @@
                     <div class="form-group row">
                         <div class="col">
                             <label for="fatec-nome">Nome da Unidade:</label>
-                            <input type="text" class="form-control labeled"
+                            <input type="text" class="form-control labeled" readonly
                                    id="fatec-nome" name="docente_unidade"
-                                   value="Fatec Itapira – Ogari de Castro Pacheco" disabled>
+                                   value="Fatec Itapira – Ogari de Castro Pacheco">
                         </div>
 
                         <div class="col">
                             <label for="fatec-edital">N° de Edital:</label>
-                            <input type="text" class="form-control labeled" disabled
+                            <input type="text" class="form-control labeled" readonly
                                    id="fatec-edital" value="{{ $edital->numero_edital }}">
                         </div>
                     </div>
@@ -33,20 +37,20 @@
                     <div class="form-group">
                         <label for="candidato-nome">Nome do(a) Docente:</label>
                         <input type="text" class="form-control labeled"
-                               id="candidato-nome" value="{{ Auth::user()->name }}" disabled>
+                               id="candidato-nome" value="{{ Auth::user()->name }}" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="candidato-email">E-mail institucional:</label>
                         <input type="email" class="form-control labeled"
                                id="candidato-email" placeholder="seu.nome@fatec.sp.gov.br"
-                               disabled value="{{ Auth::user()->email }}">
+                               readonly value="{{ Auth::user()->email }}">
                     </div>
 
                     <div class="form-group row">
                         <div class="col">
                             <label for="candidato-telefone">Telefone (Residencial):</label>
-                            <input type="number" class="form-control labeled" id="candidato-telefone" name="docente_celular">
+                            <input type="number" class="form-control labeled" id="candidato-telefone" name="docente_telefone">
                         </div>
 
                         <div class="col">
@@ -77,9 +81,9 @@
                         <div class="col">
                             <label for="categoria-docente">Categoria do docente:</label>
                             <p>
-                                <input type="radio" name="docente_pes" id="categoria-docente-pes"> PES III
-                                <input type="radio" name="docente_pes" id="categoria-docente-pes"> PES II
-                                <input type="radio" name="docente_pes" id="categoria-docente-pes"> PES I
+                                <input type="radio" name="docente_pes" id="categoria-docente-pes" value="3"> PES III
+                                <input type="radio" name="docente_pes" id="categoria-docente-pes" value="2"> PES II
+                                <input type="radio" name="docente_pes" id="categoria-docente-pes" value="1"> PES I
                             </p>
                         </div>
 

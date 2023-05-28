@@ -37,5 +37,10 @@ class Edital extends Model
     {
         return Carbon::parse($this->horario_fim)->format('H:i');
     }
+
+    public function save(array $options = []) {
+        $this->descricao = "";
+        parent::save($options);
+    }
 }
 

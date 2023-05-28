@@ -30,7 +30,7 @@ class EditalController extends Controller
 
     public function show(int $id) : View
     {
-        $edital = Edital::find($id);
+        $edital = Edital::findOrFail($id);
 
         return view('editais.show')->with('edital', $edital);
     }
@@ -59,6 +59,8 @@ class EditalController extends Controller
         }
 
         $edital->save();
+
+        session()->flash('success', 'Edital criado com sucesso!');
 
         return to_route('editais.show', $edital->id);
     }

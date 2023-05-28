@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Edital;
+use App\Models\ManifestoInteresse;
 use Illuminate\Http\Request;
 
 class ManifestarController extends Controller
@@ -35,7 +36,45 @@ class ManifestarController extends Controller
      */
     public function store(Request $request)
     {
-        echo "Manifestou!!!";
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        $edital = Edital::findOrFail($request->id_edital);
+
+        $manifesto = new ManifestoInteresse();
+        $manifesto->usuario = auth()->user()->getAuthIdentifier();
+        $manifesto->edital = $edital->id;
+        $manifesto->docente_unidade = $request->docente_unidade;
+        $manifesto->docente_grau = $request->docente_grau;
+        $manifesto->docente_pes = $request->docente_pes;
+        $manifesto->docente_celular = $request->docente_celular;
+        $manifesto->docente_telefone = $request->docente_telefone;
+        $manifesto->partir_de = $request->partir_de;
+
+        // upload do arquivo anexo de pontuacao
+        if ($request->hasFile('pontuacao') && $request->file('pontuacao')->isValid()) {
+            $requestAnexo = $request->pontuacao;
+            $extension = $requestAnexo->extension();
+            $anexoName = md5($requestAnexo->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestAnexo->move(public_path('anexos/manifestos/pontuacoes'), $anexoName);
+            $manifesto->pontuacao = $anexoName;
+        }
+
+        // upload do arquivo anexo de comprovante
+        if ($request->hasFile('comprovante') && $request->file('comprovante')->isValid()) {
+            $requestAnexo = $request->comprovante;
+            $extension = $requestAnexo->extension();
+            $anexoName = md5($requestAnexo->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestAnexo->move(public_path('anexos/manifestos/comprovantes'), $anexoName);
+            $manifesto->comprovante = $anexoName;
+        }
+
+        $manifesto->save();
+
+        session()->flash('success', 'Manifestação de interesse cadastrada com sucesso!');
+
+        return to_route('editais.index');
     }
 
     /**

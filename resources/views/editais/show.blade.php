@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="card-footer d-flex justify-content-between">
-                    <p class="card-text"><strong>Curso</strong> {{ $edital->curso }}</p><a href="edital.html"
+                    <p class="card-text"><strong>Curso</strong> {{ $edital->curso }}</p><a href="{{ route('manifestar.create', ["id_edital" => $edital->id]) }}"
                         class="btn btn-danger">Manifestar Interesse</a>
                 </div>
 
@@ -42,6 +42,7 @@
                     </p>
                 </div>
             </div>
+        </div>
     </main>
     <!-- FIM Main -->
 @endsection

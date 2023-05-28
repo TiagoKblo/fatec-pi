@@ -13,13 +13,20 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/home.css">
 
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
 </head>
 <body>
-    <!-- Cabeçalho Principal -->
+    @if (session()->has('success'))
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+
+<!-- Cabeçalho Principal -->
     <header id="cabecalho">
         <section class="container d-flex align-items-center justify-content-between">
             <!-- Logo/Brand da FATEC -->
@@ -34,9 +41,16 @@
             <!-- Botões de Autenticação e Perfil -->
             <ul class="autenticar">
             @auth
-                <li style="text-decoration: underline"><a href="/perfil">Olá <?php
-                    echo strtok(Auth::user()->name, ' ')
-                ?>!</a></li>
+                <li style="text-decoration: underline">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?= strtok(Auth::user()->name, ' ') ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/logout">Sair</a>
+                        </div>
+                    </div>
+                </li>
             @else
                 <li class="cadastrar"><a href="/register">Cadastre-se</a></li>
                 <li class="login"><a href="/login">Login</a></li>
@@ -87,6 +101,16 @@
     </footer>
     <!-- FIM Rodapé Principal -->
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script>
+        let alert = document.getElementById('success-alert');
+        let duration = 10000; // Adjust the duration (in milliseconds) as per your requirement
+
+        setTimeout(() => {
+            let bootstrapAlert = new bootstrap.Alert(alert);
+            bootstrapAlert.close();
+        }, duration);
+    </script>
     @yield('scripts')
 </body>
 </html>

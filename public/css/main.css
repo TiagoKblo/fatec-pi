@@ -6,3 +6,61 @@
 @import url("./components/header.css");
 /* Footer */
 @import url("./components/footer.css");
+
+#principal {
+    background: var(--azul) url("../img/cover-headerline.png") no-repeat top;
+    background-size: 100%;
+    padding-bottom: 2rem;
+}
+
+#principal h1 {
+    margin: 0;
+    color: var(--branco);
+    padding: 3rem;
+}
+
+#principal .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    max-width: 860px;
+    width: 100%;
+    position: relative;
+}
+
+.fatec-logo {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.fatec-logo img {
+    width: 100px;
+}
+
+.card:not(:first-child) {
+    margin-top: 2rem;
+}
+
+.voltar-topo {
+    display: none;
+}
+
+
+@media (min-width: 576px) {
+    .voltar-topo {
+        display: block;
+        position: fixed;
+        bottom: 5vh;
+        right: 1vw;
+        opacity: .5;
+        transition: opacity .2s ease-out;
+    }
+
+    .voltar-topo:hover {
+        opacity: 1;
+    }
+}

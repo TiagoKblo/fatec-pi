@@ -24,6 +24,8 @@ return new class extends Migration
             $table->integer('docente_telefone');
 
             $table->date('partir_de');
+
+            // docs. uploads
             $table->string('pontuacao');
             $table->string('comprovante');
 
