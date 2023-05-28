@@ -30,7 +30,7 @@
     <header id="cabecalho">
         <section class="container d-flex align-items-center justify-content-between">
             <!-- Logo/Brand da FATEC -->
-            <a class="logo" href="/"><img src="/img/logo_fatec/logo_fatec_cor.png" alt="Fatec Itapira"></a>
+            <a class="logo" href="/"><img src="{{ asset('img/logo_fatec/logo_fatec_cor.png') }}" alt="Fatec Itapira"></a>
 
             <!-- Caixa de Pesquisa -->
             <div class="pesquisa d-flex align-content-center">
