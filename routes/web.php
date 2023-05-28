@@ -30,5 +30,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('editais', EditalController::class);
+// Route::resource('manifestar', [ManifestarController::class]);
 
 require __DIR__ . '/auth.php';

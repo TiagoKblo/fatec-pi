@@ -17,11 +17,11 @@
                                 placeholder="Ex: 001/2023" required>
                         </div>
 
-                        <div class="form-group mt-2">
-                            <label for="descricao" class="mb-2">Descrição:</label>
-                            <textarea class="form-control" id="descricao" name="descricao"
-                                      placeholder="Adicione uma descrição ao edital" rows="3" required></textarea>
-                        </div>
+{{--                        <div class="form-group mt-2">--}}
+{{--                            <label for="descricao" class="mb-2">Descrição:</label>--}}
+{{--                            <textarea class="form-control" id="descricao" name="descricao"--}}
+{{--                                      placeholder="Adicione uma descrição ao edital" rows="3" required></textarea>--}}
+{{--                        </div>--}}
 
                         <div class="form-group mt-2">
                             <label for="curso" class="mb-2">Curso:</label>
