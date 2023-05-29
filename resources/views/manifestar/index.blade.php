@@ -19,17 +19,21 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                             <tr>
-                                <th class="py-3 px-6 text-left">Nome</th>
-                                <th class="py-3 px-6 text-left">E-mail</th>
+                                <th class="py-3 px-6 text-left">ID</th>
+                                <th class="py-3 px-6 text-left">Usuário</th>
+                                <th class="py-3 px-6 text-left">Número do Edital</th>
                                 <th class="py-3 px-6 text-left">Data da Manifestação</th>
+                                <th class="py-3 px-6 text-left">Partir de</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($usuarios as $usuario)
+                            @foreach($manifestacoes as $manifestacao)
                             <tr class="hover:bg-gray-50">
-                                <td class="py-4 px-6">{{ $usuario->nome }}</td>
-                                <td class="py-4 px-6">{{ $usuario->email }}</td>
-                                <td class="py-4 px-6">{{ $usuario->data_manifestacao }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $manifestacao->id }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $manifestacao->usuario->email }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $manifestacao->edital->numero_edital }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $manifestacao->created_at->format('d/m/Y') }}</td>
+                                <td class="py-4 px-6 border-b border-gray-200">{{ $manifestacao->partir_de }}</td>
                             </tr>
                             @endforeach
                         </tbody>
