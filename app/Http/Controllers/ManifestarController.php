@@ -13,8 +13,8 @@ class ManifestarController extends Controller
      */
     public function index()
     {
-        $manifestos = ManifestoInteresse::all();
-        return view('manifestar.index')->with('manifestos', $manifestos);
+        $manifestacoes = ManifestoInteresse::all();
+        return view('manifestar.index')->with('manifestacoes', $manifestacoes);
     }
 
     /*
