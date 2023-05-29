@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('docente_unidade');
-            $table->integer('docente_grau');
-            $table->integer('docente_pes');
-            $table->integer('docente_celular');
-            $table->integer('docente_telefone');
+
+            $table->string('unidade');
+            $table->integer('grau');
+            $table->integer('pes');
+            $table->char('celular', 11);
+            $table->char('telefone', 10);
         });
     }
 

@@ -42,4 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Um usuário tem uma matrícula
+    // Uma matrícula pertence a um usuário
+    public function matricula()
+    {
+        return $this->hasOne(Matricula::class);
+    }
 }
