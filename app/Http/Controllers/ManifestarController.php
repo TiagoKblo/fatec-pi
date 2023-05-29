@@ -13,7 +13,8 @@ class ManifestarController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = auth()->user();
+        return view('manifestar.index')->with('usuario', $usuario);
     }
 
     /*

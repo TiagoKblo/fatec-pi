@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('unidade');
-            $table->integer('grau');
-            $table->integer('pes');
+            $table->string('unidade')->default('Fatec Itapira - Ogari de Castro Pacheco');
             $table->char('celular', 11);
             $table->char('telefone', 10);
         });
