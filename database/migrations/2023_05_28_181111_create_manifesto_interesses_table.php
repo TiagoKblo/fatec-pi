@@ -17,11 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('usuario');
             $table->unsignedBigInteger('edital');
 
-            $table->string('docente_unidade');
-            $table->integer('docente_grau');
-            $table->integer('docente_pes');
-            $table->integer('docente_celular');
-            $table->integer('docente_telefone');
+           
 
             $table->date('partir_de');
 
