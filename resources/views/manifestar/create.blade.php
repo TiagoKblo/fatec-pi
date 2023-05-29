@@ -24,7 +24,7 @@
                             <label for="fatec-nome">Nome da Unidade:</label>
                             <input type="text" class="form-control labeled" readonly
                                    id="fatec-nome" name="docente_unidade"
-                                   value="Fatec Itapira – Ogari de Castro Pacheco" required>
+                                   value="Fatec Itapira - Ogari de Castro Pacheco" required>
                         </div>
 
                         <div class="col">
