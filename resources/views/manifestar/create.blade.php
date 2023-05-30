@@ -24,7 +24,7 @@
                             <label for="fatec-nome">Nome da Unidade:</label>
                             <input type="text" class="form-control labeled" readonly
                                    id="fatec-nome" name="docente_unidade"
-                                   value="Fatec Itapira - Ogari de Castro Pacheco" required>
+                                   value="{{ $matricula->unidade ?? 'Fatec Itapira - Ogari de Castro Pacheco' }}" required>
                         </div>
 
                         <div class="col">
@@ -50,12 +50,12 @@
                     <div class="form-group row">
                         <div class="col">
                             <label for="candidato-telefone">Telefone (Residencial):</label>
-                            <input type="number" class="form-control labeled" id="candidato-telefone" name="docente_telefone" required>
+                            <input type="number" class="form-control labeled" id="candidato-telefone" name="docente_telefone" required value="{{ $matricula->telefone ?? '' }}">
                         </div>
 
                         <div class="col">
                             <label for="candidato-celular">Celular:</label>
-                            <input type="number" class="form-control labeled" id="candidato-celular" name="docente_celular" required>
+                            <input type="number" class="form-control labeled" id="candidato-celular" name="docente_celular" required value="{{ $matricula->celular ?? '' }}">
                         </div>
                     </div>
 
@@ -88,7 +88,7 @@
                         </div>
 
                         <div class="col">
-                            Grau <input type="number" name="docente_grau" id="categoria-docente-grau" class="form-control labeled" required>
+                            Grau <input type="text" name="docente_grau" id="categoria-docente-grau" class="form-control labeled" size="1" value="{{ $matricula->grau ?? '' }}" required>
                         </div>
                     </div>
 

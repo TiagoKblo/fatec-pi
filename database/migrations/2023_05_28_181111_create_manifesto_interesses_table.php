@@ -17,8 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('usuario');
             $table->unsignedBigInteger('edital');
 
-           
-
             $table->date('partir_de');
 
             // docs. uploads
