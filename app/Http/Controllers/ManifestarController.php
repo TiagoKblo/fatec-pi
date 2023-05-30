@@ -105,6 +105,9 @@ class ManifestarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $manifesto = ManifestoInteresse::findOrFail($id);
+        $manifesto->delete();
+
+        return to_route('manifestar.index');
     }
 }

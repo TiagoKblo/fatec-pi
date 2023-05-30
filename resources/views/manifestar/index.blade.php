@@ -19,17 +19,35 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                             <tr>
-                                <th class="py-3 px-6 text-left">Nome</th>
-                                <th class="py-3 px-6 text-left">E-mail</th>
-                                <th class="py-3 px-6 text-left">Data da Manifestação</th>
+                                <th class="py-3 px-6 text-left">ID do Manifesto</th>
+                                <th class="py-3 px-6 text-left">ID do Docente</th>
+                                <th class="py-3 px-6 text-left">ID do Edital</th>
+                                <th class="py-3 px-6 text-left">Data de Manifestação</th>
+                                <th class="py-3 px-6 text-left">Tabela de Pontuação</th>
+                                <th class="py-3 px-6 text-left">Comprovante</th>
+                                <th class="py-3 px-6 text-left">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($usuarios as $usuario)
+                            @foreach($manifestos as $manifesto)
                             <tr class="hover:bg-gray-50">
-                                <td class="py-4 px-6">{{ $usuario->nome }}</td>
-                                <td class="py-4 px-6">{{ $usuario->email }}</td>
-                                <td class="py-4 px-6">{{ $usuario->data_manifestacao }}</td>
+                                <td class="py-4 px-6">{{ $manifesto->id }}</td>
+                                <td class="py-4 px-6">{{ $manifesto->usuario }}</td>
+                                <td class="py-4 px-6">{{ $manifesto->edital }}</td>
+                                <td class="py-4 px-6">{{ $manifesto->partir_de }}</td>
+                                <td class="py-4 px-6">
+                                    <a href="{{ $manifesto->pontuacao }}" class="text-blue-500 underline">Pontuação</a>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <a href="{{ $manifesto->comprovante }}" class="text-blue-500 underline">Comprovante</a>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <form action="{{ route('manifestar.destroy', $manifesto->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="Excluir" class="text-blue-500 underline cursor-pointer">
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
