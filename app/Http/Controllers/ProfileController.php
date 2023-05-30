@@ -18,7 +18,7 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $usuario = $request->user();
-        $matricula = $usuario->matricula;
+        $matricula = Matricula::where('user_id', $usuario->id)->first();
 
         return view('profile.edit', [
             'user' => $usuario,
