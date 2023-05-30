@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Matricula;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $usuario = $request->user();
+        $matricula = $usuario->matricula;
+
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $usuario,
+            'matricula' => $matricula,
         ]);
     }
 
@@ -27,6 +32,15 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
+
+        $matricula = Matricula::find($request->user()->matricula->id);
+        $matricula->unidade = $request->unidade;
+        $matricula->grau = $request->grau;
+        $matricula->pes = $request->pes;
+        $matricula->celular = $request->celular;
+        $matricula->telefone = $request->telefone;
+        $matricula->save();
+
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;

@@ -15,9 +15,16 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->string('unidade')->default('Fatec Itapira - Ogari de Castro Pacheco');
-            $table->char('celular', 11);
-            $table->char('telefone', 10);
+
+            $table->char('grau', 1)->default('A');
+            $table->enum('pes', [1, 2, 3])->default(1);
+
+            $table->char('celular', 11)->nullable();
+            $table->char('telefone', 10)->nullable();
         });
     }
 

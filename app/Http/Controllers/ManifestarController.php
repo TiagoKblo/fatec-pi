@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Edital;
 use App\Models\ManifestoInteresse;
+use App\Models\Matricula;
 use Illuminate\Http\Request;
 
 class ManifestarController extends Controller
@@ -27,9 +28,11 @@ class ManifestarController extends Controller
         }
 
         $id = $request->query('id_edital');
-        $edital = Edital::findOrFail($id);
 
-        return view('manifestar.create')->with('edital', $edital);
+        $edital = Edital::findOrFail($id);
+        $matricula = auth()->user()->matricula;
+
+        return view('manifestar.create')->with('edital', $edital)->with('matricula', $matricula);
     }
 
     /**
@@ -46,11 +49,14 @@ class ManifestarController extends Controller
         $manifesto = new ManifestoInteresse();
         $manifesto->usuario = auth()->user()->getAuthIdentifier();
         $manifesto->edital = $edital->id;
-        $manifesto->docente_unidade = $request->docente_unidade;
-        $manifesto->docente_grau = $request->docente_grau;
-        $manifesto->docente_pes = $request->docente_pes;
-        $manifesto->docente_celular = $request->docente_celular;
-        $manifesto->docente_telefone = $request->docente_telefone;
+
+        $matricula = Matricula::find(auth()->user()->matricula->id);
+        $matricula->grau = $request->docente_grau;
+        $matricula->pes = $request->docente_pes;
+        $matricula->celular = $request->docente_celular;
+        $matricula->telefone = $request->docente_telefone;
+        $matricula->save();
+
         $manifesto->partir_de = $request->partir_de;
 
         // upload do arquivo anexo de pontuacao
@@ -99,6 +105,9 @@ class ManifestarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $manifesto = ManifestoInteresse::findOrFail($id);
+        $manifesto->delete();
+
+        return to_route('manifestar.index');
     }
 }
