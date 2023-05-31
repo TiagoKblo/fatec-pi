@@ -58,29 +58,57 @@
             </ul>
         </section>
 
-        <!-- Filtros -->
+   <!-- Filtros -->
         <section class="container">
             <div class="filtros d-flex justify-content-between">
-                <select class="form-select btn">
-                    <option>A Qualquer Momento</option>
+                <select id="filtro-form" class="form-select btn">
+                    <option>Número do Edital</option>
                 </select>
 
-                <select class="form-select btn">
+                <select id="tipo-vaga" class="form-select btn">
                     <option>Tipo de Vaga</option>
+                    <option value="determinada">Determinada</option>
+                    <option value="indeterminada">Indeterminada</option>
                 </select>
 
-                <select class="form-select btn">
-                    <option>Setores</option>
+                <select id="status-edital" class="form-select btn">
+                    <option>Status do Edital</option>
+                    <option value="abertos">Abertos</option>
+                    <option value="finalizados">Finalizados</option>
                 </select>
 
-                <select class="form-select btn">
-                    <option>Carga Horária</option>
-                </select>
+                <button id="btn-buscar" class="btn btn-primary">Buscar</button>
             </div>
         </section>
         <!-- FIM Filtros -->
     </header>
     <!-- FIM Cabeçalho Principal -->
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var btnBuscar = document.getElementById('btn-buscar');
+            btnBuscar.addEventListener('click', function() {
+                var filtroForm = document.getElementById('filtro-form');
+                var filtroSelecionado = filtroForm.value;
+
+                var tipoVaga = document.getElementById('tipo-vaga').value;
+                var statusEdital = document.getElementById('status-edital').value;
+
+                // Enviar solicitação AJAX com os filtros selecionados
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        // Processar os resultados da busca aqui
+                        var response = JSON.parse(this.responseText);
+                        // Faça algo com os resultados obtidos
+                    }
+                };
+                xhttp.open('GET', '/buscar?filtro=' + filtroSelecionado + '&tipo=' + tipoVaga + '&status=' + statusEdital, true);
+                xhttp.send();
+            });
+        });
+    </script>
 
     <!-- MAIN! -->
     @yield('main')
