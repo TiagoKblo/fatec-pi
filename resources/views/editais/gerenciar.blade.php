@@ -8,13 +8,18 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Lista de Editais</h5>
+
                     <table class="table">
+
                         <thead>
                             <tr>
                                 <th>Número do Edital</th>
                                 <th>Disciplina</th>
                                 <th>Status</th>
                                 <th>Ações</th>
+                                <td>
+                                        <a href="{{ route('editais.create') }}" class="btn btn-primary">Criar</a>
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
