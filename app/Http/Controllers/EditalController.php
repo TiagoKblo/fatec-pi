@@ -17,6 +17,11 @@ class EditalController extends Controller
 
         return view('home.index')->with('editais', $editais);
     }
+    public function gerenciar()
+    {
+        $editais = Edital::all();
+        return view('editais.gerenciar')->with('editais', $editais);
+    }
 
     public function create() : View | RedirectResponse
     {
