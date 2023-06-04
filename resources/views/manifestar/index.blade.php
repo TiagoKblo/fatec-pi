@@ -11,7 +11,9 @@
                 <div class="p-6 text-gray-900">
                     <h1 class="font-bold text-3xl">Ações Administrativas</h1>
                     <ul class="mt-2">
-                        <li class="list-disc ml-5"><a href="{{ route('editais.create') }}" class="underline text-blue-500">Cadastrar Edital</a></li>
+                        <li class="list-disc ml-5"><a href="{{ route('gerenciar') }}" class="underline text-blue-500">Gerenciar Editais</a></li>
+                        <li class="list-disc ml-5"><a href="{{ route('manifestar.index') }}" class="underline text-blue-500">Gerenciar Manifestações<a></li>
+                        <li class="list-disc ml-5"><a href="profile" class="underline text-blue-500">Gerenciar Usuários</a></li>
                     </ul>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -19,9 +21,9 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                             <tr>
+                                <th class="py-3 px-6 text-left">ID do Edital</th>
                                 <th class="py-3 px-6 text-left">ID do Manifesto</th>
                                 <th class="py-3 px-6 text-left">ID do Docente</th>
-                                <th class="py-3 px-6 text-left">ID do Edital</th>
                                 <th class="py-3 px-6 text-left">Data de Manifestação</th>
                                 <th class="py-3 px-6 text-left">Tabela de Pontuação</th>
                                 <th class="py-3 px-6 text-left">Comprovante</th>

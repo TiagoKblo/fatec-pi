@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Matricula;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+
 
 class ProfileController extends Controller
 {
@@ -25,10 +27,19 @@ class ProfileController extends Controller
             'matricula' => $matricula,
         ]);
     }
+    public function usuarios(Request $request): View
+    {
+        $usuarios = User::all(); // Obtém todos os usuários
+
+        return view('profile.usuarios', [
+            'usuarios' => $usuarios,
+        ]);
+    }
 
     /**
      * Update the user's profile information.
      */
+
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());

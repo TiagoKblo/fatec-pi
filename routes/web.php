@@ -35,5 +35,6 @@ Route::resource('manifestar', ManifestarController::class);
 Route::get('/buscar', [BuscaController::class, 'buscar']);
 
 Route::get('gerenciar', [EditalController::class, 'gerenciar'])->name('gerenciar');
+Route::get('profile', [ProfileController::class, 'usuarios'])->name('profile.usuarios');
 
 require __DIR__ . '/auth.php';

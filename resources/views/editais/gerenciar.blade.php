@@ -32,6 +32,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('editais.show', $edital->id) }}" class="btn btn-primary">Ver Detalhes</a>
+                                        <a href="{{ route('manifestar.index', $edital->id) }}" class="btn btn-primary">Manifestações de Interesse</a>
                                         <a href="{{ route('editais.edit', $edital->id) }}" class="btn btn-secondary">Editar</a>
                                     </td>
                                 </tr>
