@@ -20,7 +20,8 @@ class Edital extends Model
         'horario_inicio',
         'horario_fim',
         'prazo',
-        'anexo_edital'
+        'anexo_edital',
+        'status'
     ];
 
     public function getDiaDaSemana()

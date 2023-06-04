@@ -4,7 +4,6 @@ use App\Http\Controllers\EditalController;
 use App\Http\Controllers\ManifestarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BuscaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +31,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('editais', EditalController::class);
 Route::resource('manifestar', ManifestarController::class);
-Route::get('/buscar', [BuscaController::class, 'buscar']);
 
 Route::get('gerenciar', [EditalController::class, 'gerenciar'])->name('gerenciar');
 Route::get('profile', [ProfileController::class, 'usuarios'])->name('profile.usuarios');

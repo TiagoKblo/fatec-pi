@@ -28,7 +28,15 @@
                                     <td>{{ $edital->numero_edital }}</td>
                                     <td>{{ $edital->disciplina }}</td>
                                     <td>
-                                        <span class="badge {{ $edital->status == 'ativo' ? 'badge-success' : 'badge-danger' }}">{{ $edital->status }}</span>
+                                        <span class="{{ $edital->status === 'A' ? 'text-success' : 'text-danger' }}">
+                                            @if ($edital->status === 'A')
+                                                Aberto
+                                            @elseif ($edital->status === 'F')
+                                                Finalizado
+                                            @elseif ($edital->status === 'C')
+                                                Cancelado
+                                            @endif
+                                        </span>
                                     </td>
                                     <td>
                                         <a href="{{ route('editais.show', $edital->id) }}" class="btn btn-primary">Ver Detalhes</a>

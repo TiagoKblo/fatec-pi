@@ -25,8 +25,11 @@
                             recursos materiais.</p>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-                        <p class="card-text"><strong>Curso</strong> {{ $edital->curso }}</p><a
-                            href="{{ route('editais.show', $edital->id) }}" class="btn btn-primary">Saiba Mais</a>
+                        <p class="card-text">
+                            <strong>Curso</strong> {{ $edital->curso }}
+                            <strong>Status</strong> {{ $edital->status === 'A' ? 'Aberto' : ($edital->status == 'F' ? 'Finalizado' : 'Cancelado') }}
+                        </p>
+                        <a href="{{ route('editais.show', $edital->id) }}" class="btn btn-primary">Saiba Mais</a>
                     </div>
                 </div>
             @endforeach

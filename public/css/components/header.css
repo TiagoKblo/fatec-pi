@@ -4,6 +4,11 @@
     padding: 1rem 0;
 }
 
+#cabecalho form {
+    display: inherit;
+    width: 100%;
+}
+
 .autenticar {
     margin: 0;
 }

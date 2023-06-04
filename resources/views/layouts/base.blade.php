@@ -34,8 +34,10 @@
 
             <!-- Caixa de Pesquisa -->
             <div class="pesquisa d-flex align-content-center">
-                <input type="search" class="caixa-pesquisa" placeholder="Pesquisar Cargos ou Fatecs">
+                <form action="{{ route('editais.index') }}">
+                <input type="search" class="caixa-pesquisa" name="numero_edital" placeholder="Pesquisar numero de edital">
                 <button type="submit">Pesquisar</button>
+                </form>
             </div>
 
             <!-- Botões de Autenticação e Perfil -->
@@ -85,30 +87,7 @@
     <!-- FIM Cabeçalho Principal -->
 
     <!-- Scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var btnBuscar = document.getElementById('btn-buscar');
-            btnBuscar.addEventListener('click', function() {
-                var filtroForm = document.getElementById('filtro-form');
-                var filtroSelecionado = filtroForm.value;
 
-                var tipoVaga = document.getElementById('tipo-vaga').value;
-                var statusEdital = document.getElementById('status-edital').value;
-
-                // Enviar solicitação AJAX com os filtros selecionados
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState === 4 && this.status === 200) {
-                        // Processar os resultados da busca aqui
-                        var response = JSON.parse(this.responseText);
-                        // Faça algo com os resultados obtidos
-                    }
-                };
-                xhttp.open('GET', '/buscar?filtro=' + filtroSelecionado + '&tipo=' + tipoVaga + '&status=' + statusEdital, true);
-                xhttp.send();
-            });
-        });
-    </script>
 
     <!-- MAIN! -->
     @yield('main')

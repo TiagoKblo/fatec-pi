@@ -48,20 +48,20 @@
                     @endif
                 </div>
             @endif
-            <div>
+            <div class="mt-2">
                 <x-input-label for="unidade" :value="__('Unidade')" />
-                <x-text-input id="unidade" name="unidade" type="text" class="mt-1 block w-full" :value="old('unidade', $user->unidade ?? 'Fatec Itapira - Ogari de Castro Pacheco')"
+                <x-text-input id="unidade" name="unidade" type="text" class="mt-1 block w-full" :value="old('unidade', $matricula->unidade ?? 'Fatec Itapira - Ogari de Castro Pacheco')"
                     required autofocus autocomplete="unidade" />
                 <x-input-error class="mt-2" :messages="$errors->get('unidade')" />
             </div>
 
-            <div>
+            <div class="mt-2">
                 <x-input-label for="grau" :value="__('Grau')" />
-                <x-text-input id="grau" name="grau" type="text" class="mt-1 block w-full" :value="old('grau', $user->grau)"
+                <x-text-input id="grau" name="grau" type="text" class="mt-1 block w-full" :value="old('grau', $matricula->grau)"
                     required autofocus autocomplete="grau" />
                 <x-input-error class="mt-2" :messages="$errors->get('grau')" />
             </div>
-            <div>
+            <div class="mt-2">
                 <label for="pes" class="block font-medium text-sm text-gray-700">{{ __('Pes') }}</label>
                 <select id="pes" name="pes"
                     class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
@@ -73,16 +73,16 @@
                 <x-input-error class="mt-2" :messages="$errors->get('pes')" />
             </div>
 
-            <div>
+            <div class="mt-2">
                 <x-input-label for="celular" :value="__('Celular')" />
-                <x-text-input id="celular" name="celular" type="text" class="mt-1 block w-full" :value="old('celular', $user->celular)"
+                <x-text-input id="celular" name="celular" type="text" class="mt-1 block w-full" :value="old('celular', $matricula->celular)"
                     autocomplete="celular" />
                 <x-input-error class="mt-2" :messages="$errors->get('celular')" />
             </div>
 
-            <div>
+            <div class="mt-2">
                 <x-input-label for="telefone" :value="__('Telefone')" />
-                <x-text-input id="telefone" name="telefone" type="text" class="mt-1 block w-full" :value="old('telefone', $user->telefone)"
+                <x-text-input id="telefone" name="telefone" type="text" class="mt-1 block w-full" :value="old('telefone', $matricula->telefone)"
                     autocomplete="telefone" />
                 <x-input-error class="mt-2" :messages="$errors->get('telefone')" />
             </div>

@@ -13,19 +13,32 @@ class EditalController extends Controller
     public function index(Request $request) : View
     {
         $curso = $request->query('curso');
-        $editais = Edital::where('curso', 'LIKE', "%$curso%")->orderBy('created_at', 'desc')->paginate(10);
+        $numero_edital = $request->query('numero_edital');
+
+        $editais = Edital::where('curso', 'like', "%$curso%")->where('numero_edital', 'like', "%$numero_edital%")
+            ->orderBy('status', 'asc')
+            ->orderBy('created_at', 'desc')
+            ->orderBy('numero_edital', 'asc')
+            ->paginate(10);
+
 
         return view('home.index')->with('editais', $editais);
     }
     public function gerenciar()
     {
         $editais = Edital::all();
+        $editais = Edital::orderBy('status', 'asc')
+                   ->orderBy('numero_edital', 'asc')
+                   ->orderBy('created_at', 'desc')
+                   ->paginate(10);
+
         return view('editais.gerenciar')->with('editais', $editais);
     }
 
     public function create() : View | RedirectResponse
     {
         // checar se o usuário está logado
+        // TODO: checar se o usuário é admin ou coordenador
         if (!auth()->check()) {
             return redirect()->route('login');
         }
@@ -42,6 +55,13 @@ class EditalController extends Controller
 
     public function store(Request $request) : RedirectResponse
     {
+        // checar se o usuário está logado
+        // TODO: checar se o usuário é admin ou coordenador
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+
         $edital = new Edital();
 
         $edital->numero_edital = $request->numero_edital;
@@ -66,6 +86,48 @@ class EditalController extends Controller
         $edital->save();
 
         session()->flash('success', 'Edital criado com sucesso!');
+
+        return to_route('editais.show', $edital->id);
+    }
+
+    public function edit(int $id) : View
+    {
+        // checar se o usuário está logado
+        // TODO: checar se o usuário é admin ou coordenador
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        $edital = Edital::findOrFail($id);
+
+        return view('editais.edit')->with('edital', $edital);
+    }
+
+    public function update(Request $request, int $id) : RedirectResponse
+    {
+        // checar se o usuário está logado
+        // TODO: checar se o usuário é admin ou coordenador
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        $edital = Edital::findOrFail($id);
+
+
+        $edital->numero_edital = $request->numero_edital;
+        $edital->curso = $request->curso;
+        $edital->disciplina = $request->disciplina;
+        $edital->turno = $request->turno;
+        $edital->horas_aula = $request->horas_aula;
+        $edital->dia_da_semana = $request->dia_da_semana;
+        $edital->horario_inicio = $request->horario_inicio;
+        $edital->horario_fim = $request->horario_fim;
+        $edital->prazo = $request->prazo;
+        $edital->status = $request->status;
+
+        $edital->save();
+
+        session()->flash('success', 'Edital atualizado com sucesso!');
 
         return to_route('editais.show', $edital->id);
     }
