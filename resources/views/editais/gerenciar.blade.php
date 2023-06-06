@@ -18,12 +18,12 @@
                                 <th>Status</th>
                                 <th>Ações</th>
                                 <td>
-                                        <a href="{{ route('editais.create') }}" class="btn btn-primary">Criar</a>
+                                    <a href="{{ route('editais.create') }}" class="btn btn-primary">Criar</a>
                                 </td>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($editais as $edital)
+                            @foreach ($editais as $edital)
                                 <tr>
                                     <td>{{ $edital->numero_edital }}</td>
                                     <td>{{ $edital->disciplina }}</td>
@@ -39,9 +39,12 @@
                                         </span>
                                     </td>
                                     <td>
-                                        <a href="{{ route('editais.show', $edital->id) }}" class="btn btn-primary">Ver Detalhes</a>
-                                        <a href="{{ route('manifestar.index', $edital->id) }}" class="btn btn-primary">Manifestações de Interesse</a>
-                                        <a href="{{ route('editais.edit', $edital->id) }}" class="btn btn-secondary">Editar</a>
+                                        <a href="{{ route('editais.show', $edital->id) }}" class="btn btn-primary">Ver
+                                            Detalhes</a>
+                                        <a href="{{ route('manifestar.index', $edital->id) }}"
+                                            class="btn btn-primary">Manifestações de Interesse</a>
+                                        <a href="{{ route('editais.edit', $edital->id) }}"
+                                            class="btn btn-secondary">Editar</a>
                                     </td>
                                 </tr>
                             @endforeach
