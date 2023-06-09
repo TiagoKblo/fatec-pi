@@ -27,6 +27,7 @@
                                     <td>{{ Carbon\Carbon::parse($manifesto->created_at)->format('d/m/Y') }}</td>
                                     <td>
                                         <a href="{{ route('manifestar.show', $manifesto->id) }}" class="btn btn-primary">Visualizar</a>
+
                                         <a href="{{ route('manifestar.edit', $manifesto->id) }}" class="btn btn-secondary">Editar</a>
                                     </td>
                                 </tr>
