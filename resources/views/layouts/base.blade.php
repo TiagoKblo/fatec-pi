@@ -35,9 +35,9 @@
             <!-- Caixa de Pesquisa -->
             <div class="pesquisa d-flex align-content-center">
                 <form action="{{ route('editais.index') }}">
-                <input type="search" class="caixa-pesquisa" name="numero_edital" placeholder="Pesquisar numero de edital">
-                <button type="submit">Pesquisar</button>
-                </form>
+                    <input type="search" class="caixa-pesquisa" name="numero_edital" placeholder="Pesquisar numero de edital">
+                    <button type="submit">Pesquisar</button>
+
             </div>
 
             <!-- Botões de Autenticação e Perfil -->
@@ -46,7 +46,7 @@
                 <li style="text-decoration: underline">
                     <div class="dropdown">
                         <a href="/perfil" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?= strtok(Auth::user()->name, ' ') ?>
+                            {{ strtok(Auth::user()->name, ' ') }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="/logout">Sair</a>
@@ -63,23 +63,29 @@
    <!-- Filtros -->
         <section class="container">
             <div class="filtros d-flex justify-content-between">
-                <select id="filtro-form" class="form-select btn">
-                    <option>Número do Edital</option>
+                <select id="filtro-cursos" class="form-select btn" name="curso">
+                    <option value="">Cursos</option>
+                    <option value="DSM">Desenvolvimento de Software Multiplataforma</option>
+                    <option value="GTI">Gestão da Tecnologia da Informação</option>
+                    <option value="GE">Gestão Empresarial</option>
+                    <option value="GPI">Gestão da Produção Industrial</option>
                 </select>
 
-                <select id="tipo-vaga" class="form-select btn">
-                    <option>Tipo de Vaga</option>
+                <select id="tfiltro-vaga" class="form-select btn" name="vaga">
+                    <option value="">Tipo de Vaga</option>
                     <option value="determinada">Determinada</option>
                     <option value="indeterminada">Indeterminada</option>
                 </select>
 
-                <select id="status-edital" class="form-select btn">
-                    <option>Status do Edital</option>
-                    <option value="abertos">Abertos</option>
-                    <option value="finalizados">Finalizados</option>
+                <select id="filtro-status" class="form-select btn" name="status">
+                    <option value="">Status do Edital</option>
+                    <option value="A">Abertos</option>
+                    <option value="F">Finalizados</option>
+                    <option value="C">Cancelados</option>
                 </select>
 
-                <button id="btn-buscar" class="btn btn-primary">Buscar</button>
+                </form>
+                <!-- <button id="btn-buscar" class="btn btn-primary">Buscar</button> -->
             </div>
         </section>
         <!-- FIM Filtros -->
@@ -87,7 +93,6 @@
     <!-- FIM Cabeçalho Principal -->
 
     <!-- Scripts -->
-
 
     <!-- MAIN! -->
     @yield('main')

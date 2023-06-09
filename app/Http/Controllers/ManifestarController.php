@@ -96,7 +96,10 @@ class ManifestarController extends Controller
      */
     public function show(string $id)
     {
-        $manifesto = ManifestoInteresse::with('users')->findOrFail($id);
+        $manifesto = ManifestoInteresse::findOrFail($id);
+        $manifesto->edital = Edital::findOrFail($manifesto->edital);
+        $manifesto->usuario = User::findOrFail($manifesto->user_id);
+
         return view('manifestar.show')->with('manifesto', $manifesto);
     }
 

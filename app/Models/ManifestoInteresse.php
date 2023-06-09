@@ -16,4 +16,5 @@ class ManifestoInteresse extends Model
     {
         return $this->hasMany(User::class, 'id', 'user_id')->select(['id', 'name', 'email', 'created_at']);
     }
+
 }

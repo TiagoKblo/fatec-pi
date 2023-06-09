@@ -34,7 +34,6 @@ Route::resource('manifestar', ManifestarController::class);
 
 Route::get('gerenciar', [EditalController::class, 'gerenciar'])->name('gerenciar');
 Route::get('profile', [ProfileController::class, 'usuarios'])->name('profile.usuarios');
-Route::get('/manifestos/{id}', 'ManifestarCrontroller')->name('manifestar.show');
 
 
 require __DIR__ . '/auth.php';
