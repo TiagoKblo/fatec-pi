@@ -49,4 +49,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(Matricula::class);
     }
+
+    // Um usuário pode fazer um ou mais manifestos de interesse
+    // Um manifesto de interesse pode ser feito por um ou mais usuários
+    public function manifestos()
+    {
+        return $this->belongsToMany(ManifestoInteresse::class);
+    }
 }

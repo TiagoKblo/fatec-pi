@@ -8,43 +8,26 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Lista de Candidatos</h5>
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>ID do Edital</th>
-                                <th>ID do Manifesto</th>
-                                <th>ID do Docente</th>
-                                <th>Data de Manifestação</th>
-                                <th>Tabela de Pontuação</th>
-                                <th>Visualizar Comprovante</th>
-                                <th>Ações</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Número do Edital</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Visualizar Comprovante</th>
+                                <th scope="col">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($manifestos as $manifesto)
                                 <tr>
-                                    <td>{{ $manifesto->id }}</td>
-                                    <td>{{ $manifesto->usuario }}</td>
-                                    <td>{{ $manifesto->edital }}</td>
-                                    <td>{{ $manifesto->partir_de }}</td>
+                                    <th scope="row">{{ $manifesto->id }}</th>
+                                    <td>{{ $manifesto->edital->numero_edital }}</td>
+                                    <td>{{ $manifesto->status }}</td>
+                                    <td>{{ Carbon\Carbon::parse($manifesto->created_at)->format('d/m/Y') }}</td>
                                     <td>
-                                        <a href="{{ $manifesto->pontuacao }}" class="text-blue-500 underline">Pontuação</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ $manifesto->comprovante }}"
-                                            class="text-blue-500 underline">Comprovante</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('manifestar.show', $manifesto->id) }}"
-                                            class="text-blue-500 underline">Ver Detalhes</a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('manifestar.destroy', $manifesto->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="submit" value="Excluir"
-                                                class="text-blue-500 underline cursor-pointer">
-                                        </form>
+                                        <a href="{{ route('manifestar.show', $manifesto->id) }}" class="btn btn-primary">Visualizar</a>
+                                        <a href="{{ route('manifestar.edit', $manifesto->id) }}" class="btn btn-secondary">Editar</a>
                                     </td>
                                 </tr>
                             @endforeach

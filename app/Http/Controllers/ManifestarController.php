@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Edital;
 use App\Models\ManifestoInteresse;
 use App\Models\Matricula;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ManifestarController extends Controller
@@ -15,8 +16,14 @@ class ManifestarController extends Controller
     public function index()
     {
         $manifestos = ManifestoInteresse::all();
+
+        foreach ($manifestos as $manifesto) {
+
+            $manifesto->edital = Edital::find($manifesto->edital);
+        }
         return view('manifestar.index')->with('manifestos', $manifestos);
     }
+
 
     /*
      * Tela de criação de manifestação
@@ -47,7 +54,7 @@ class ManifestarController extends Controller
         $edital = Edital::findOrFail($request->id_edital);
 
         $manifesto = new ManifestoInteresse();
-        $manifesto->usuario = auth()->user()->getAuthIdentifier();
+        $manifesto->user_id = auth()->user()->getAuthIdentifier();
         $manifesto->edital = $edital->id;
 
         $matricula = Matricula::find(auth()->user()->matricula->id);
@@ -89,7 +96,17 @@ class ManifestarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $manifesto = ManifestoInteresse::with('users')->findOrFail($id);
+        return view('manifestar.show')->with('manifesto', $manifesto);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $manifesto = ManifestoInteresse::with('users')->findOrFail($id);
+        return view('manifestar.edit')->with('manifesto', $manifesto);
     }
 
     /**
@@ -105,9 +122,6 @@ class ManifestarController extends Controller
      */
     public function destroy(string $id)
     {
-        $manifesto = ManifestoInteresse::findOrFail($id);
-        $manifesto->delete();
-
-        return to_route('manifestar.index');
+        //
     }
 }

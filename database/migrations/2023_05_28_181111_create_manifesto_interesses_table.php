@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('manifesto_interesses', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('usuario');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('edital');
 
             $table->date('partir_de');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('pontuacao');
             $table->string('comprovante');
 
-            $table->foreign('usuario')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('edital')->references('id')->on('editals');
 
             $table->timestamps();

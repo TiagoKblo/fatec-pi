@@ -11,7 +11,7 @@
                 </div>
             @endif
             @foreach ($editais as $edital)
-                <div class="card">
+                <div class="card w-75">
                     <div class="fatec-logo">
                         <img src="/img/fatec-itapira.png" alt="Fatec Itapira">
                     </div>
