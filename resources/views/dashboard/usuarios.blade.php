@@ -11,12 +11,14 @@
                 <div class="p-6 text-gray-900">
                     <h1 class="font-bold text-3xl">Ações Administrativas</h1>
                     <ul class="mt-2">
-                        <li class="list-disc ml-5"><a href="{{ route('gerenciar') }}" class="underline text-blue-500">Gerenciar Editais</a></li>
+                        <li class="list-disc ml-5"><a href="{{ route('editais.gerenciar') }}" class="underline text-blue-500">Gerenciar Editais</a></li>
                         <li class="list-disc ml-5"><a href="{{ route('manifestar.index') }}" class="underline text-blue-500">Gerenciar Manifestações<a></li>
-                        <li class="list-disc ml-5"><a href="{{ route('profile.usuarios') }}" class="underline text-blue-500">Gerenciar Usuários</a></li>
+                        <li class="list-disc ml-5"><a href="{{ route('dashboard.usuarios') }}" class="underline text-blue-500">Gerenciar Usuários</a></li>
                     </ul>
                 </div>
             </div>
+
+            @include('dashboard.partials.gerenciar-usuarios')
         </div>
     </div>
 </x-app-layout>

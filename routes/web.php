@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditalController;
 use App\Http\Controllers\ManifestarController;
 use App\Http\Controllers\ProfileController;
@@ -19,9 +20,7 @@ Route::get('/', function () {
     return redirect(route('editais.index'));
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,8 +31,10 @@ Route::middleware('auth')->group(function () {
 Route::resource('editais', EditalController::class);
 Route::resource('manifestar', ManifestarController::class);
 
-Route::get('gerenciar', [EditalController::class, 'gerenciar'])->name('gerenciar');
-Route::get('profile', [ProfileController::class, 'usuarios'])->name('profile.usuarios');
+Route::get('gerenciar-editais', [EditalController::class, 'gerenciar'])->name('editais.gerenciar');
+Route::get('gerenciar-usuarios', [DashboardController::class, 'usuarios'])->name('dashboard.usuarios');
 
+
+Route::resource('dashboard', DashboardController::class)->name('dashboard.index', 'dashboard');
 
 require __DIR__ . '/auth.php';
