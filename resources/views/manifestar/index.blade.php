@@ -14,7 +14,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Número do Edital</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Visualizar Comprovante</th>
+                                <th scope="col">Data da Inscrição</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
