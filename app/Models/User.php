@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(ManifestoInteresse::class);
     }
+
+    public static function possuiCargos(User $usuario, $cargos)
+    {
+        return in_array($usuario->matricula->cargo, $cargos);
+    }
 }

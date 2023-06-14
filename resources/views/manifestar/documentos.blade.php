@@ -3,7 +3,7 @@
 @section('main')
     <!-- Main -->
     <main id="principal">
-        <h1 class="text-center">Informações da Manifestação de Edital</h1>
+        <h1 class="text-center">Análise de Documentos</h1>
         <div class="container">
             <div class="card">
                 <div class="card-body">
@@ -40,8 +40,16 @@
                                 </td>
                                 <td>{{ $manifesto->usuario->name }}</td>
                                 <td>{{ $manifesto->partir_de }}</td>
-                                   <td>
-                                    <a href="/anexos/{{ $manifesto->pontuacao }}" class="btn btn-primary">Visualizar</a>
+                                <td>
+                                    <ul>
+                                        @foreach ($manifesto->documentos as $documento)
+                                            <li>
+                                                <a href="/anexos/{{ $documento->nome }}" class="btn btn-primary">
+                                                    Visualizar
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </td>
                                 <td>
                                     <div class="form-check form-check-inline">

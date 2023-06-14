@@ -12,6 +12,10 @@ class DashboardController extends Controller
     }
 
     public function index() {
+        // Se o usuário não for admin ou coordenador, redireciona para a home
+        if (!User::possuiCargos(auth()->user(), ['ADMINISTRADOR', 'COORDENADOR'])) {
+            return redirect()->route('editais.index');
+        }
         return view('dashboard.index');
     }
 

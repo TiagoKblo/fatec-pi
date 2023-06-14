@@ -33,6 +33,7 @@ Route::resource('manifestar', ManifestarController::class);
 
 Route::get('gerenciar-editais', [EditalController::class, 'gerenciar'])->name('editais.gerenciar');
 Route::get('gerenciar-usuarios', [DashboardController::class, 'usuarios'])->name('dashboard.usuarios');
+Route::get('manifestar/{id}/documentos', [ManifestarController::class, 'documentos'])->name('manifestar.documentos');
 
 
 Route::resource('dashboard', DashboardController::class)->name('dashboard.index', 'dashboard');

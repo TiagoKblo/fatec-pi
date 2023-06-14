@@ -17,10 +17,13 @@ class ManifestarController extends Controller
     {
         $manifestos = ManifestoInteresse::all();
 
-        foreach ($manifestos as $manifesto) {
-
+        foreach ($manifestos as $manifesto)
+        {
+            $manifesto->usuario = User::find($manifesto->user);
             $manifesto->edital = Edital::find($manifesto->edital);
         }
+
+
         return view('manifestar.index')->with('manifestos', $manifestos);
     }
 
