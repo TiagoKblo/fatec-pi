@@ -7,24 +7,40 @@
         <div class="container">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Detalhes do Manifesto</h5>
+                    <h5 class="card-title">Documentação</h5>
 
                     <table class="table">
 
                         <thead>
                             <tr>
-                                <th>Número do Edital</th>
-                                <th>Status da Inscrição</th>
+                                <th>Matrícula</th>
                                 <th>Nome do Docente</th>
                                 <th>Data de Manifestação</th>
                                 <th>Analisar Documentos</th>
-                                <th>Deferir/Indeferir Inscrição</th>
+                                <th>Status do Documento</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{{ $manifesto->edital->numero_edital }}</td>
+                                <td>{{ $manifesto->usuario->name }}</td>
+                                <td>{{ $manifesto->partir_de }}</td>
+                                <td>
+                                    <select name="status_pontuacao">
+                                        <option value="D" {{ $manifesto->status_pontuacao === 'D' ? 'selected' : '' }}>
+                                            Deferido</option>
+                                        <option value="I" {{ $manifesto->status_pontuacao === 'I' ? 'selected' : '' }}>
+                                            Indeferido</option>
+                                    </select>
+                                    <br>
+                                    <select name="status_comprovante">
+                                        <option value="D" {{ $manifesto->status_comprovante === 'D' ? 'selected' : '' }}>
+                                            Deferido</option>
+                                        <option value="I" {{ $manifesto->status_comprovante === 'I' ? 'selected' : '' }}>
+                                            Indeferido</option>
+                                    </select>
+                                </td>
                                 <td>
                                     <span class="{{ $manifesto->status === 'D' ? 'text-success' : 'text-danger' }}">
                                         @if ($manifesto->status === 'R')
@@ -38,40 +54,13 @@
                                         @endif
                                     </span>
                                 </td>
-                                <td>{{ $manifesto->usuario->name }}</td>
-                                <td>{{ $manifesto->partir_de }}</td>
-                                <td>
-                                    <ul>
-                                        @foreach ($manifesto->documentos as $documento)
-                                            <li>
-                                                <a href="/anexos/{{ $documento->nome }}" class="btn btn-primary">
-                                                    Visualizar
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-                                <td>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio"
-                                            name="status_{{ $manifesto->id }}" value="deferido"
-                                            {{ $manifesto->status === 'D' ? 'checked' : '' }}>
-                                        <label class="form-check-label">Deferido</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio"
-                                            name="status_{{ $manifesto->id }}" value="indeferido"
-                                            {{ $manifesto->status === 'I' ? 'checked' : '' }}>
-                                        <label class="form-check-label">Indeferido</label>
-                                    </div>
-                                    <div>
-                                        <textarea name="observacoes" class="form-control"
-                                            placeholder="Observações"></textarea>
-                                    </div>
-                                </td>
                                 <td>
                                     <a href="{{ route('manifestar.edit', $manifesto->id) }}"
                                         class="btn btn-primary">Enviar</a>
+                                    <a href="{{ route('anexo/', $manifesto->pontuacao) }}"  class="btn btn-info">Tabela de
+                                        Pontuação</a>
+                                    <a href="{{ route('anexo/', $manifesto->documentos) }}""
+                                        class="btn btn-info">Documentos Comprobatórios</a>
                                 </td>
                             </tr>
                         </tbody>
