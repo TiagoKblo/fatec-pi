@@ -44,27 +44,30 @@
                                     <a href="/anexos/{{ $manifesto->pontuacao }}" class="btn btn-primary">Visualizar</a>
                                 </td>
                                 <td>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio"
-                                            name="status_{{ $manifesto->id }}" value="deferido"
-                                            {{ $manifesto->status === 'D' ? 'checked' : '' }}>
-                                        <label class="form-check-label">Deferido</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio"
-                                            name="status_{{ $manifesto->id }}" value="indeferido"
-                                            {{ $manifesto->status === 'I' ? 'checked' : '' }}>
-                                        <label class="form-check-label">Indeferido</label>
-                                    </div>
-                                    <div>
-                                        <textarea name="observacoes" class="form-control"
-                                            placeholder="Observações"></textarea>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a href="{{ route('manifestar.edit', $manifesto->id) }}"
-                                        class="btn btn-primary">Enviar</a>
-                                </td>
+                                    <form action="{{ route('manifestar.update', $manifesto->id) }}" method="post">
+                                        @csrf
+                                        @method('patch')
+                                        <input type="hidden" name="status_atual" id="status_atual" value="{{ $manifesto->status }}">
+                                        <div class="form-check form-check-inline mb-2">
+                                            <input class="form-check-input" type="radio"
+                                                name="status" value="D"
+                                                {{ $manifesto->status === 'D' ? 'checked' : '' }}>
+                                            <label class="form-check-label">Deferido</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio"
+                                                name="status" value="I"
+                                                {{ $manifesto->status === 'I' ? 'checked' : '' }}>
+                                            <label class="form-check-label">Indeferido</label>
+                                        </div>
+
+                                        <textarea name="motivo_indeferimento" id="motivo_indeferimento" cols="30" rows="3"
+                                            class="form-control mt-2 mb-2" placeholder="Motivo do Indeferimento">{{ trim($manifesto->motivo_indeferimento) }}</textarea>
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Enviar" class="btn btn-primary">
+                                    </td>
+                                </form>
                             </tr>
                         </tbody>
                     </table>
@@ -73,4 +76,25 @@
         </div>
     </main>
     <!-- FIM Main -->
+
+<script>
+    const $status = document.getElementsByName('status');
+    const $motivoIndeferimento = document.getElementById('motivo_indeferimento');
+    const $statusServidor = document.getElementById('status_atual').value;
+
+    $motivoIndeferimento.style.display = $statusServidor === 'I' ? 'block' : 'none';
+
+    $status.forEach($radio => {
+        $radio.addEventListener('change', () => {
+            if ($radio.value === 'I') {
+                $motivoIndeferimento.removeAttribute('disabled');
+                $motivoIndeferimento.style.display = 'block';
+            } else {
+                $motivoIndeferimento.setAttribute('disabled', 'disabled');
+                $motivoIndeferimento.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 @endsection

@@ -19,7 +19,7 @@
                 <div class="card-footer d-flex justify-content-between">
                     <p class="card-text">
                         <strong>Curso</strong> {{ $edital->curso }}
-                        <strong>Status</strong> {{ $edital->status === 'A' ? 'Aberto' : ($edital->status == 'F' ? 'Finalizado' : 'Cancelado') }}
+                        <strong>Status</strong> {{ $edital->getStatusName() }}
                     </p>
 
                     <a href="{{ route('manifestar.create', ['id_edital' => $edital->id]) }}"

@@ -43,5 +43,33 @@ class Edital extends Model
         $this->descricao = "";
         parent::save($options);
     }
+
+    public function getStatusOptions() : array
+    {
+        return [
+            'A' => 'Aberto',
+            'F' => 'Finalizado',
+            'C' => 'Cancelado',
+            'CA' => 'Cadastrado',
+            'P' => 'Publicado',
+            'E' => 'Errata',
+            'CN' => 'Cancelado (Sem Inscrições)',
+            'RI' => 'Recebendo Inscrições',
+            'RR' => 'Em Análise',
+            'RP' => 'Deferimentos Publicados',
+            'FI' => 'Finalizado sem Inscritos',
+            'RP' => 'Resultado Parcial Publicado',
+            'RR' => 'Recebendo Recursos',
+            'AR' => 'Analisando Recursos',
+            'RP' => 'Resultado Publicado',
+        ];
+    }
+
+    public function getStatusName() : string
+    {
+        $statusOptions = $this->getStatusOptions();
+
+        return $statusOptions[$this->status];
+    }
 }
 

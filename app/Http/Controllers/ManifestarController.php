@@ -65,7 +65,6 @@ class ManifestarController extends Controller
         $matricula->pes = $request->docente_pes;
         $matricula->celular = $request->docente_celular;
         $matricula->telefone = $request->docente_telefone;
-        $matricula->save();
 
         $manifesto->partir_de = $request->partir_de;
 
@@ -111,8 +110,7 @@ class ManifestarController extends Controller
      */
     public function edit(string $id)
     {
-        $manifesto = ManifestoInteresse::with('users')->findOrFail($id);
-        return view('manifestar.edit')->with('manifesto', $manifesto);
+        //
     }
 
     /**
@@ -120,7 +118,20 @@ class ManifestarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+        elseif (!User::possuiCargos(auth()->user(), ['administrador', 'coordenador'])) {
+            return redirect()->route('home');
+        }
+
+        $manifesto = ManifestoInteresse::findOrFail($id);
+        $manifesto->status = $request->status;
+        $manifesto->motivo_indeferimento = $request->motivo_indeferimento;
+        $manifesto->save();
+
+        session()->flash('success', 'Manifestação de interesse atualizada com sucesso!');
+        return redirect()->route('manifestar.index');
     }
 
     /**
@@ -129,5 +140,41 @@ class ManifestarController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Mostra a tela de documentos do manifesto
+     */
+    public function documentos(Request $request, string $manifesto_id)
+    {
+        if (!auth()->check()) return redirect()->route('login');
+        if ($request->method() === 'PATCH') return $this->documentosPatch($request, $manifesto_id);
+        else return $this->documentosGet($manifesto_id);
+    }
+
+    public function documentosGet(string $manifesto_id)
+    {
+        $manifesto = ManifestoInteresse::findOrFail($manifesto_id);
+
+        $manifesto->edital = Edital::findOrFail($manifesto->edital);
+        $manifesto->usuario = User::findOrFail($manifesto->user_id);
+
+        return view('manifestar.documentos')->with('manifesto', $manifesto);
+    }
+
+    public function documentosPatch(Request $request, string $manifesto_id)
+    {
+        if (!auth()->check()) return redirect()->route('login');
+        if (!User::possuiCargos(auth()->user(), ['administrador', 'coordenador'])) return redirect()->route('home');
+
+        $manifesto = ManifestoInteresse::findOrFail($manifesto_id);
+
+        $manifesto->status_pontuacao = $request->status_pontuacao;
+        $manifesto->status_comprovante = $request->status_comprovante;
+
+        $manifesto->save();
+
+        session()->flash('success', 'Documentos do manifesto atualizados com sucesso!');
+        return redirect()->route('manifestar.show', $manifesto->id);
     }
 }

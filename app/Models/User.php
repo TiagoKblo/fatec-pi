@@ -59,6 +59,7 @@ class User extends Authenticatable
 
     public static function possuiCargos(User $usuario, $cargos)
     {
+        $cargos = array_map('strtoupper', $cargos);
         return in_array($usuario->matricula->cargo, $cargos);
     }
 }

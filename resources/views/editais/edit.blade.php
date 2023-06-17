@@ -96,7 +96,7 @@
     <label for="status" class="mb-2">Status:</label>
     <select class="form-control" id="status" name="status" required>
         <option value="">Selecione um status</option>
-        @foreach ($statusOptions as $key => $value)
+        @foreach ($edital->getStatusOptions() as $key => $value)
             <option value="{{ $key }}" {{ $edital->status == $key ? 'selected' : '' }}>{{ $value }}</option>
         @endforeach
     </select>

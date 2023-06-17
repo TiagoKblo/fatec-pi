@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Edital;
-use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -49,6 +48,7 @@ class EditalController extends Controller
     public function show(int $id) : View
     {
         $edital = Edital::findOrFail($id);
+
 
         return view('editais.show')->with('edital', $edital);
     }
@@ -100,7 +100,8 @@ class EditalController extends Controller
 
         $edital = Edital::findOrFail($id);
 
-        return view('editais.edit')->with('edital', $edital);
+        return view('editais.edit')
+            ->with('edital', $edital);
     }
 
     public function update(Request $request, int $id) : RedirectResponse
@@ -131,5 +132,4 @@ class EditalController extends Controller
 
         return to_route('editais.show', $edital->id);
     }
-
 }
