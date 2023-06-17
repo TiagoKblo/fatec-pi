@@ -25,8 +25,7 @@
         </div>
     @endif
 
-
-<!-- Cabeçalho Principal -->
+    <!-- Cabeçalho Principal -->
     <header id="cabecalho">
         <section class="container d-flex align-items-center justify-content-between">
             <!-- Logo/Brand da FATEC -->
@@ -37,7 +36,7 @@
                 <form action="{{ route('editais.index') }}">
                     <input type="search" class="caixa-pesquisa" name="numero_edital" placeholder="Pesquisar numero de edital">
                     <button type="submit">Pesquisar</button>
-
+                </form>
             </div>
 
             <!-- Botões de Autenticação e Perfil -->
@@ -60,7 +59,7 @@
             </ul>
         </section>
 
-   <!-- Filtros -->
+        <!-- Filtros -->
         <section class="container">
             <div class="filtros d-flex justify-content-between">
                 <select id="filtro-cursos" class="form-select btn" name="curso">
@@ -83,16 +82,11 @@
                     <option value="F">Finalizados</option>
                     <option value="C">Cancelados</option>
                 </select>
-
-                </form>
-                <!-- <button id="btn-buscar" class="btn btn-primary">Buscar</button> -->
             </div>
         </section>
         <!-- FIM Filtros -->
     </header>
     <!-- FIM Cabeçalho Principal -->
-
-    <!-- Scripts -->
 
     <!-- MAIN! -->
     @yield('main')
@@ -100,6 +94,25 @@
     <div class="voltar-topo">
         <a href="#principal"><img src="/img/seta-cima.png" alt="Voltar ao Topo"></a>
     </div>
+
+    <!-- Modal -->
+    <div id="meuModal" class="modal fade" tabindex="-1" aria-labelledby="meuModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="meuModalLabel">Título do Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Conteúdo do modal...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fim Modal -->
 
     <!-- Rodapé Principal -->
     <footer id="rodape">
@@ -123,6 +136,23 @@
             bootstrapAlert.close();
         }, duration);
     </script>
+    <script>
+        // Abrir o modal
+        function abrirModal() {
+            var modal = new bootstrap.Modal(document.getElementById('meuModal'));
+            modal.show();
+        }
+
+        // Fechar o modal
+        function fecharModal() {
+            var modal = bootstrap.Modal.getInstance(document.getElementById('meuModal'));
+            modal.hide();
+        }
+    </script>
+    <!-- Modal -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     @yield('scripts')
 </body>
 </html>
