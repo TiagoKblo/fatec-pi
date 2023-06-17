@@ -41,7 +41,7 @@
                                 <td>{{ $manifesto->usuario->name }}</td>
                                 <td>{{ $manifesto->partir_de }}</td>
                                    <td>
-                                    <a href="/anexos/{{ $manifesto->pontuacao }}" class="btn btn-primary">Visualizar</a>
+                                    <a href="{{ route('manifestar.documentos', $manifesto->id) }}" class="btn btn-primary">Visualizar</a>
                                 </td>
                                 <td>
                                     <form action="{{ route('manifestar.update', $manifesto->id) }}" method="post">

@@ -57,9 +57,9 @@
                                 <td>
                                     <a href="{{ route('manifestar.edit', $manifesto->id) }}"
                                         class="btn btn-primary">Enviar</a>
-                                    <a href="{{ route('anexo/', $manifesto->pontuacao) }}"  class="btn btn-info">Tabela de
+                                    <a href="anexo/{{ $manifesto->pontuacao }}"  class="btn btn-info">Tabela de
                                         Pontuação</a>
-                                    <a href="{{ route('anexo/', $manifesto->documentos) }}""
+                                    <a href="anexo/{{ $manifesto->documentos }}"
                                         class="btn btn-info">Documentos Comprobatórios</a>
                                 </td>
                             </tr>
