@@ -93,14 +93,15 @@
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="status" class="mb-2">Status:</label>
-                            <select class="form-control" id="status" name="status" required>
-                                <option value="">Selecione um status</option>
-                                <option value="A" {{ $edital->status == 'A' ? 'selected' : '' }}>Aberto</option>
-                                <option value="F" {{ $edital->status == 'F' ? 'selected' : '' }}>Finalizado</option>
-                                <option value="C" {{ $edital->status == 'C' ? 'selected' : '' }}>Cancelado</option>
-                            </select>
-                        </div>
+    <label for="status" class="mb-2">Status:</label>
+    <select class="form-control" id="status" name="status" required>
+        <option value="">Selecione um status</option>
+        @foreach ($statusOptions as $key => $value)
+            <option value="{{ $key }}" {{ $edital->status == $key ? 'selected' : '' }}>{{ $value }}</option>
+        @endforeach
+    </select>
+</div>
+
                     </div>
 
                     <div class="card-footer row" class="mb-2">

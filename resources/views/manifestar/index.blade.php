@@ -7,7 +7,7 @@
         <div class="container">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Lista de Candidatos</h5>
+                    <h5 class="card-title">Lista de Editais</h5>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -23,7 +23,44 @@
                                 <tr>
                                     <th scope="row">{{ $manifesto->id }}</th>
                                     <td>{{ $manifesto->edital->numero_edital }}</td>
-                                    <td>{{ $manifesto->status }}</td>
+                                 <td>
+    <span class="{{ $manifesto->edital->status === 'A' ? 'text-success' : 'text-danger' }}">
+        @if ($manifesto->edital->status === 'A')
+            Aberto
+        @elseif ($manifesto->edital->status === 'F')
+            Finalizado
+        @elseif ($manifesto->edital->status === 'C')
+            Cancelado
+        @elseif ($manifesto->edital->status === 'CA')
+            Cadastrado
+        @elseif ($manifesto->edital->status === 'P')
+            Publicado
+        @elseif ($manifesto->edital->status === 'E')
+            Errata
+        @elseif ($manifesto->edital->status === 'CN')
+            Cancelado (Sem Inscrições)
+        @elseif ($manifesto->edital->status === 'RI')
+            Recebendo Inscrições
+        @elseif ($manifesto->edital->status === 'RR')
+            Em Análise
+        @elseif ($manifesto->edital->status === 'RP')
+            Deferimentos Publicados
+        @elseif ($manifesto->edital->status === 'FI')
+            Finalizado sem Inscritos
+        @elseif ($manifesto->edital->status === 'RP')
+            Resultado Parcial Publicado
+        @elseif ($manifesto->edital->status === 'RR')
+            Recebendo Recursos
+        @elseif ($manifesto->edital->status === 'AR')
+            Analisando Recursos
+        @elseif ($manifesto->edital->status === 'RP')
+            Resultado Publicado
+        @elseif ($manifesto->edital->status === 'FI')
+            Finalizado
+        @endif
+    </span>
+</td>
+
                                     <td>{{ Carbon\Carbon::parse($manifesto->created_at)->format('d/m/Y') }}</td>
                                     <td>
                                         <a href="{{ route('manifestar.show', $manifesto->id) }}" class="btn btn-primary">Visualizar</a>
