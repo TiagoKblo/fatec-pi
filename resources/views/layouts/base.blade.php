@@ -44,7 +44,7 @@
             @auth
                 <li style="text-decoration: underline">
                     <div class="dropdown">
-                        <a href="/perfil" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="/perfil">
                             {{ strtok(Auth::user()->name, ' ') }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -95,25 +95,6 @@
         <a href="#principal"><img src="/img/seta-cima.png" alt="Voltar ao Topo"></a>
     </div>
 
-    <!-- Modal -->
-    <div id="meuModal" class="modal fade" tabindex="-1" aria-labelledby="meuModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="meuModalLabel">Título do Modal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Conteúdo do modal...</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fim Modal -->
-
     <!-- Rodapé Principal -->
     <footer id="rodape">
         <section class="cps-logo">
@@ -127,6 +108,7 @@
     <!-- FIM Rodapé Principal -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
     <script>
         let alert = document.getElementById('success-alert');
         let duration = 10000; // Adjust the duration (in milliseconds) as per your requirement
@@ -136,22 +118,7 @@
             bootstrapAlert.close();
         }, duration);
     </script>
-    <script>
-        // Abrir o modal
-        function abrirModal() {
-            var modal = new bootstrap.Modal(document.getElementById('meuModal'));
-            modal.show();
-        }
 
-        // Fechar o modal
-        function fecharModal() {
-            var modal = bootstrap.Modal.getInstance(document.getElementById('meuModal'));
-            modal.hide();
-        }
-    </script>
-    <!-- Modal -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     @yield('scripts')
 </body>
