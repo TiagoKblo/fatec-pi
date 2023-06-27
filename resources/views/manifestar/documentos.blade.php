@@ -64,7 +64,7 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="{{ route('manifestar.edit', $manifesto->id) }}" class="btn btn-primary">Enviar</a>
+                                <a href="{{ route('manifestar.show', $manifesto->id) }}" class="btn btn-primary">Enviar</a>
                             </td>
                         </tr>
                     </tbody>

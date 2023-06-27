@@ -39,6 +39,11 @@ class Edital extends Model
         return Carbon::parse($this->horario_fim)->format('H:i');
     }
 
+    public function getPrazo()
+    {
+        return strtoupper($this->prazo);
+    }
+
     public function save(array $options = []) {
         $this->descricao = "";
         parent::save($options);
@@ -55,10 +60,10 @@ class Edital extends Model
             'E' => 'Errata',
             'CN' => 'Cancelado (Sem Inscrições)',
             'RI' => 'Recebendo Inscrições',
-            'RR' => 'Em Análise',
-            'RP' => 'Deferimentos Publicados',
+            'EA' => 'Em Análise',
+            'DP' => 'Deferimentos Publicados',
             'FI' => 'Finalizado sem Inscritos',
-            'RP' => 'Resultado Parcial Publicado',
+            'RPP' => 'Resultado Parcial Publicado',
             'RR' => 'Recebendo Recursos',
             'AR' => 'Analisando Recursos',
             'RP' => 'Resultado Publicado',
@@ -71,5 +76,6 @@ class Edital extends Model
 
         return $statusOptions[$this->status];
     }
+
 }
 

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Painel') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,11 @@
                     <ul class="mt-2">
                         <li class="list-disc ml-5"><a href="{{ route('editais.gerenciar') }}" class="underline text-blue-500">Gerenciar Editais</a></li>
                         <li class="list-disc ml-5"><a href="{{ route('manifestar.index') }}" class="underline text-blue-500">Gerenciar Manifestações<a></li>
-                        <li class="list-disc ml-5"><a href="{{ route('dashboard.usuarios') }}" class="underline text-blue-500">Gerenciar Usuários</a></li>
+                       @can('possuiCargos', ['ADMINISTRADOR'])
+    <li class="list-disc ml-5">
+        <a href="{{ route('dashboard.usuarios') }}" class="underline text-blue-500">Gerenciar Usuários</a>
+    </li>
+@endcan
                     </ul>
                 </div>
             </div>

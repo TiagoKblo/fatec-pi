@@ -57,9 +57,11 @@ class User extends Authenticatable
         return $this->belongsToMany(ManifestoInteresse::class);
     }
 
+   
     public static function possuiCargos(User $usuario, $cargos)
-    {
-        $cargos = array_map('strtoupper', $cargos);
-        return in_array($usuario->matricula->cargo, $cargos);
-    }
+{
+    $cargos = array_map('strtoupper', (array) $cargos);
+    return in_array(strtoupper($usuario->matricula->cargo), $cargos);
+}
+
 }

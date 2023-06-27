@@ -22,14 +22,15 @@
                         <strong>Status</strong> {{ $edital->getStatusName() }}
                     </p>
 
-                    <a href="{{ route('manifestar.create', ['id_edital' => $edital->id]) }}"
-                        class="btn btn-danger">Manifestar Interesse
-                    </a>
+                   @can('possuiCargos', ['PROFESSOR'])
+    <a href="{{ route('manifestar.create', ['id_edital' => $edital->id]) }}" class="btn btn-danger">Manifestar Interesse</a>
+@endcan
+
                 </div>
 
                 <div class="card-body">
                     <p class="card-text">
-                        <strong>EDITAL INTERNO Nº EI {{ $edital->numero_edital }} DE OFERECIMENTO DE AULAS, POR TEMPO INDETERMINADO, PARA A FACULDADE DE TECNOLOGIA DE ITAPIRA “OGARI DE CASTRO PACHECO”, DO CENTRO ESTADUAL DE EDUCAÇÃO TECNOLÓGICA PAULA SOUZA.</strong> O Diretor da Faculdade de Tecnologia de Itapira “Ogari de Castro Pacheco”, com fundamento na DELIBERAÇÃO CEETEPS 48, DE 13-12-2018, com texto alterado pela Deliberação 52 de 09-05-2019 - Consolidada em 09-05-2019, Instrução CESU 6/2022, Portaria CESU 01/2017, editais em vigor para concurso público docente e a legislação do Conselho Estadual de Educação, faz saber ao corpo docente da Fatec contratado por tempo indeterminado, que está disponível para ampliação de carga horária, por tempo indeterminado, a partir de do 2º semestre de 2022 (27/07/2022), a seguinte disciplina, da área ADMINISTRAÇÃO E NEGÓCIOS / ENGENHARIA E TECNOLOGIA DE PRODUÇÃO (Versão 2.14.0 – 30/05/2022 da Tabela de Áreas e Disciplinas), pertencente a estrutura curricular do Curso Superior de Tecnologia em Gestão da Produção Industrial, sendo ela DISCIPLINAS DE FORMAÇÃO PROFISSIONALIZANTE em virtude do Declínio do Prof. Diego Nogueira Rafael em 06/06/2022 e sem possibilidade de atribuição excepcional, com pagamento acima das 200h mensais, nos termos do Comunicado GDS de 07 de abril de 2022.
+                        <strong>EDITAL INTERNO Nº EI {{ $edital->numero_edital }} DE OFERECIMENTO DE AULAS, POR TEMPO {{$edital->getPrazo()}}, PARA A FACULDADE DE TECNOLOGIA DE ITAPIRA “OGARI DE CASTRO PACHECO”, DO CENTRO ESTADUAL DE EDUCAÇÃO TECNOLÓGICA PAULA SOUZA.</strong> O Diretor da Faculdade de Tecnologia de Itapira “Ogari de Castro Pacheco”, com fundamento na DELIBERAÇÃO CEETEPS 48, DE 13-12-2018, com texto alterado pela Deliberação 52 de 09-05-2019 - Consolidada em 09-05-2019, Instrução CESU 6/2022, Portaria CESU 01/2017, editais em vigor para concurso público docente e a legislação do Conselho Estadual de Educação, faz saber ao corpo docente da Fatec contratado por tempo indeterminado, que está disponível para ampliação de carga horária, por tempo indeterminado, a partir de do 2º semestre de 2022 (27/07/2022), a seguinte disciplina, da área ADMINISTRAÇÃO E NEGÓCIOS / ENGENHARIA E TECNOLOGIA DE PRODUÇÃO (Versão 2.14.0 – 30/05/2022 da Tabela de Áreas e Disciplinas), pertencente a estrutura curricular do Curso Superior de Tecnologia em Gestão da Produção Industrial, sendo ela DISCIPLINAS DE FORMAÇÃO PROFISSIONALIZANTE em virtude do Declínio do Prof. Diego Nogueira Rafael em 06/06/2022 e sem possibilidade de atribuição excepcional, com pagamento acima das 200h mensais, nos termos do Comunicado GDS de 07 de abril de 2022.
                     </p>
                     <p class="card-text">
                         <strong>{{ $edital->disciplina }} – {{ $edital->curso }} - {{ $edital->horas_aula }} horas-aula – turno

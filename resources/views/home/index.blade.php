@@ -3,7 +3,7 @@
 @section('main')
     <!-- Main -->
     <main id="principal">
-        <h1 class="text-center">Editais Abertos</h1>
+        <h1 class="text-center">Editais Interno de Oferecimento de Aulas</h1>
         <div class="container">
             @if (count($editais) == 0)
                 <div class="alert alert-warning" role="alert">
@@ -27,7 +27,7 @@
                     <div class="card-footer d-flex justify-content-between">
                         <p class="card-text">
                             <strong>Curso</strong> {{ $edital->curso }}
-                            <strong>Status</strong> {{ $edital->status === 'A' ? 'Aberto' : ($edital->status == 'F' ? 'Finalizado' : 'Cancelado') }}
+                            <strong>Status</strong> {{ $edital->getStatusName() }}
                         </p>
                         <a href="{{ route('editais.show', $edital->id) }}" class="btn btn-primary">Saiba Mais</a>
                     </div>
