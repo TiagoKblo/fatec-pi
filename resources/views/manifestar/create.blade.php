@@ -64,9 +64,9 @@
                             <label for="contrato-prazo">Contrato por tempo: </label>
                             <p>
                                 <input type="radio" disabled
-                                       id="contrato-prazo" {{ $edital->prazo === "indeterminado" ? 'checked' : '' }}> Indeterminado
+                                       id="contrato-prazo" {{ $edital->prazo === "I" ? 'checked' : '' }}> Indeterminado
                                 <input type="radio" disabled
-                                       id="contrato-prazo" {{ $edital->prazo === "determinado" ? 'checked' : '' }}
+                                       id="contrato-prazo" {{ $edital->prazo === "D" ? 'checked' : '' }}
                                 > Determinado
                             </p>
                         </div>

@@ -10,46 +10,81 @@ class Edital extends Model
 {
     use HasFactory;
 
+    protected $table = 'editais';
+
     protected $fillable = [
-        'numero_edital',
-        'curso',
-        'disciplina',
-        'turno',
-        'horas_aula',
-        'dia_da_semana',
-        'horario_inicio',
-        'horario_fim',
-        'prazo',
-        'anexo_edital',
-        'status'
+        'numero_edital', // Número do edital
+        'curso', // Curso
+        'disciplina', // Disciplina
+        'turno', // Turno
+        'horas_aula', // Horas de aula
+        'dia_da_semana', // Dia da semana
+        'horario_inicio', // Horário de início
+        'horario_fim', // Horário de término
+        'prazo', // Prazo
+        'anexo_edital', // Anexo do edital
+        'status' // Status
     ];
 
+    protected $casts = [
+        'dia_da_semana' => 'integer', // O campo 'dia_da_semana' será convertido para o tipo 'integer'
+    ];
+
+    protected $attributes = [
+        'status' => 'A', // O status padrão é 'A' (Aberto)
+        'anexo_edital' => 'sem-anexo.pdf', // O anexo padrão é 'sem-anexo.pdf'
+    ];
+
+    /**
+     * Obtém o dia da semana formatado em português.
+     *
+     * @return string
+     */
     public function getDiaDaSemana()
     {
-        return Carbon::parse($this->dia_da_semana)->locale('pt_BR')->dayName;
+        return Carbon::parse($this->attributes['dia_da_semana'])->locale('pt_BR')->dayName;
     }
 
+    /**
+     * Obtém o horário de início formatado.
+     *
+     * @return string
+     */
     public function getHorarioInicio()
     {
-        return Carbon::parse($this->horario_inicio)->format('H:i');
+        return Carbon::parse(
+            $this->attributes['horario_inicio']
+        )->format('H:i');
     }
 
+    /**
+     * Obtém o horário de término formatado.
+     *
+     * @return string
+     */
     public function getHorarioFim()
     {
-        return Carbon::parse($this->horario_fim)->format('H:i');
+        return Carbon::parse(
+            $this->attributes['horario_fim']
+        )->format('H:i');
     }
 
+    /**
+     * Obtém o prazo em letras maiúsculas.
+     *
+     * @return string
+     */
     public function getPrazo()
     {
-        return strtoupper($this->prazo);
+        return strtoupper($this->attributes['prazo']);
     }
 
-    public function save(array $options = []) {
-        $this->descricao = "";
-        parent::save($options);
-    }
-
-    public function getStatusOptions() : array
+    /**
+     * Obtém as opções de status como um array.
+     *
+     * @return array
+     */
+    public function getStatusOptions(): array
     {
         return [
             'A' => 'Aberto',
@@ -70,12 +105,15 @@ class Edital extends Model
         ];
     }
 
-    public function getStatusName() : string
+    /**
+     * Obtém o nome do status com base no valor do campo 'status'.
+     *
+     * @return string
+     */
+    public function getStatusName(): string
     {
         $statusOptions = $this->getStatusOptions();
 
-        return $statusOptions[$this->status];
+        return $statusOptions[$this->attributes['status']];
     }
-
 }
-

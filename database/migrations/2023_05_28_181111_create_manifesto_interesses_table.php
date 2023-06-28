@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      */
@@ -24,7 +23,19 @@ return new class extends Migration
             $table->string('comprovante');
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('edital')->references('id')->on('editals');
+            $table->foreign('edital')->references('id')->on('editais');
+
+            $table->enum('status', ['R', 'D', 'I', 'C'])
+                ->comment('R - Registrado, D - Deferido, I - Indeferido, C - Convocado')
+                ->default('R');
+
+            $table->enum('status_pontuacao', ['EA', 'D', 'I'])->default('EA')
+                ->comment('EA - Em análise, D - Deferido, I - Indeferido');
+
+            $table->enum('status_comprovante', ['EA', 'D', 'I'])->default('EA')
+                ->comment('EA - Em análise, D - Deferido, I - Indeferido');
+
+            $table->text('motivo_indeferimento')->nullable();
 
             $table->timestamps();
         });

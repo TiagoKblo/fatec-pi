@@ -87,8 +87,8 @@
 
                         <div class="form-group mt-2">
                             <label for="prazo" class="mb-2">Prazos:</label>
-                            <input type="radio" id="prazo" name="prazo" value="determinado" {{ $edital->prazo == 'determinado' ? 'checked' : '' }}> Determinado
-                            <input type="radio" id="prazo" name="prazo" value="indeterminado" {{ $edital->prazo == 'indeterminado' ? 'checked' : '' }}>
+                            <input type="radio" id="prazo" name="prazo" value="D" {{ $edital->prazo == 'D' ? 'checked' : '' }}> Determinado
+                            <input type="radio" id="prazo" name="prazo" value="I" {{ $edital->prazo == 'I' ? 'checked' : '' }}>
                             Indeterminado
                         </div>
 
