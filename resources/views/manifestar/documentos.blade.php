@@ -41,7 +41,7 @@
                             </td>
                             <td>
                                 <div class="d-flex flex-column">
-                                    <a href="/anexos/{{ $manifesto->pontuacao }}" target="_blank" class="btn btn-info">Tabela de Pontuação</a>
+                                    <a href="/anexos/manifestos/pontuacoes/{{ $manifesto->pontuacao }}" target="_blank" class="btn btn-info">Tabela de Pontuação</a>
 
                                     <select name="status_pontuacao" class="form-select my-3">
                                         <option value="D" {{ $manifesto->status_pontuacao === 'D' ? 'selected' : '' }}>
@@ -53,7 +53,7 @@
                             </td>
                             <td>
                                 <div class="d-flex flex-column">
-                                    <a href="/anexos/{{ $manifesto->comprovante }}" target="_blank" class="btn btn-info">Documentos Comprobatórios</a>
+                                    <a href="/anexos/manifestos/comprovantes/{{ $manifesto->comprovante }}" target="_blank" class="btn btn-info">Documentos Comprobatórios</a>
 
                                     <select name="status_documentos" class="form-select my-3">
                                         <option value="D" {{ $manifesto->status_documentos === 'D' ? 'selected' : '' }}>
