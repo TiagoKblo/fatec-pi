@@ -8,9 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-
 
 class ProfileController extends Controller
 {
@@ -19,47 +17,47 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        $usuario = $request->user();
-        $matricula = Matricula::where('user_id', $usuario->id)->first();
+        $user = $request->user() ?? auth()->user();
+        $matricula = Matricula::where('user_id', $user->id)->first();
 
-        return view('profile.edit', [
-            'user' => $usuario,
-            'matricula' => $matricula,
-        ]);
+        return view('profile.edit', compact('user', 'matricula'));
     }
+
+    /**
+     * Display the list of users.
+     */
     public function usuarios(Request $request): View
     {
-        $usuarios = User::all(); // Obtém todos os usuários
+        $usuarios = User::all();
 
-        return view('profile.usuarios', [
-            'usuarios' => $usuarios,
-        ]);
+        return view('profile.usuarios', compact('usuarios'));
     }
 
     /**
      * Update the user's profile information.
      */
-
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->validated());
 
-        $matricula = Matricula::find($request->user()->matricula->id);
+        $matricula = Matricula::find($user->matricula->id);
+
         $matricula->unidade = $request->unidade;
         $matricula->grau = $request->grau;
         $matricula->pes = $request->pes;
         $matricula->celular = $request->celular;
         $matricula->telefone = $request->telefone;
+
         $matricula->save();
 
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect()->route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
@@ -80,6 +78,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return redirect()->to('/');
     }
 }

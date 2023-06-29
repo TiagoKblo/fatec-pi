@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class ManifestarController extends Controller
 {
+    public function __construct()
+    {
+        // Define que apenas usuários autenticados podem acessar os métodos do controller
+        // Exceto os métodos index e show, que podem ser acessados por qualquer usuário
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -17,12 +24,10 @@ class ManifestarController extends Controller
     {
         $manifestos = ManifestoInteresse::all();
 
-        foreach ($manifestos as $manifesto)
-        {
-            $manifesto->usuario = User::find($manifesto->user);
-            $manifesto->edital = Edital::find($manifesto->edital);
+        foreach ($manifestos as $manifesto) {
+            $manifesto->usuario = User::findOrFail($manifesto->user_id);
+            $manifesto->edital = Edital::findOrFail($manifesto->edital);
         }
-
 
         return view('manifestar.index')->with('manifestos', $manifestos);
     }
@@ -33,9 +38,6 @@ class ManifestarController extends Controller
      */
     public function create(Request $request)
     {
-        if (!auth()->check()) {
-            return redirect()->route('login');
-        }
 
         $id = $request->query('id_edital');
 
@@ -50,39 +52,30 @@ class ManifestarController extends Controller
      */
     public function store(Request $request)
     {
-        if (!auth()->check()) {
-            return redirect()->route('login');
-        }
-
         $edital = Edital::findOrFail($request->id_edital);
+        $user = auth()->user();
 
         $manifesto = new ManifestoInteresse();
-        $manifesto->user_id = auth()->user()->getAuthIdentifier();
+        $manifesto->user_id = $user->getAuthIdentifier();
         $manifesto->edital = $edital->id;
 
-        $matricula = Matricula::find(auth()->user()->matricula->id);
-        $matricula->grau = $request->docente_grau;
-        $matricula->pes = $request->docente_pes;
-        $matricula->celular = $request->docente_celular;
-        $matricula->telefone = $request->docente_telefone;
+        $matricula = $user->matricula;
+        $matricula->grau = $request->input('docente_grau');
+        $matricula->pes = $request->input('docente_pes');
+        $matricula->celular = $request->input('docente_celular');
+        $matricula->telefone = $request->input('docente_telefone');
 
         $manifesto->partir_de = $request->partir_de;
 
         // upload do arquivo anexo de pontuacao
         if ($request->hasFile('pontuacao') && $request->file('pontuacao')->isValid()) {
-            $requestAnexo = $request->pontuacao;
-            $extension = $requestAnexo->extension();
-            $anexoName = md5($requestAnexo->getClientOriginalName() . strtotime("now")) . "." . $extension;
-            $requestAnexo->move(public_path('anexos/manifestos/pontuacoes'), $anexoName);
+            $anexoName = $this->uploadFile($request->file('pontuacao'), 'anexos/manifestos/pontuacoes');
             $manifesto->pontuacao = $anexoName;
         }
 
         // upload do arquivo anexo de comprovante
         if ($request->hasFile('comprovante') && $request->file('comprovante')->isValid()) {
-            $requestAnexo = $request->comprovante;
-            $extension = $requestAnexo->extension();
-            $anexoName = md5($requestAnexo->getClientOriginalName() . strtotime("now")) . "." . $extension;
-            $requestAnexo->move(public_path('anexos/manifestos/comprovantes'), $anexoName);
+            $anexoName = $this->uploadFile($request->file('comprovante'), 'anexos/manifestos/comprovantes');
             $manifesto->comprovante = $anexoName;
         }
 
@@ -90,7 +83,7 @@ class ManifestarController extends Controller
 
         session()->flash('success', 'Manifestação de interesse cadastrada com sucesso!');
 
-        return to_route('editais.index');
+        return redirect()->route('editais.index');
     }
 
     /**
@@ -99,18 +92,10 @@ class ManifestarController extends Controller
     public function show(string $id)
     {
         $manifesto = ManifestoInteresse::findOrFail($id);
-        $manifesto->edital = Edital::findOrFail($manifesto->edital);
         $manifesto->usuario = User::findOrFail($manifesto->user_id);
+        $manifesto->edital = Edital::findOrFail($manifesto->edital);
 
         return view('manifestar.show')->with('manifesto', $manifesto);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**
@@ -118,12 +103,11 @@ class ManifestarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (!auth()->check()) {
-            return redirect()->route('login');
-        }
-        elseif (!User::possuiCargos(auth()->user(), ['administrador', 'coordenador'])) {
-            return redirect()->route('home');
-        }
+        $this->verificarCargos(['administrador', 'coordenador']);
+
+        $this->validate($request, [
+            'status' => 'required',
+        ]);
 
         $manifesto = ManifestoInteresse::findOrFail($id);
         $manifesto->status = $request->status;
@@ -135,46 +119,64 @@ class ManifestarController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
-    /**
      * Mostra a tela de documentos do manifesto
      */
     public function documentos(Request $request, string $manifesto_id)
     {
-        if (!auth()->check()) return redirect()->route('login');
-        if ($request->method() === 'PATCH') return $this->documentosPatch($request, $manifesto_id);
-        else return $this->documentosGet($manifesto_id);
+        $this->verificarCargos(['administrador', 'coordenador']);
+
+        if ($request->method() === 'PATCH') {
+            return $this->documentosPatch($request, $manifesto_id);
+        } else {
+            return $this->documentosGet($manifesto_id);
+        }
     }
 
     public function documentosGet(string $manifesto_id)
     {
         $manifesto = ManifestoInteresse::findOrFail($manifesto_id);
-
-        $manifesto->edital = Edital::findOrFail($manifesto->edital);
         $manifesto->usuario = User::findOrFail($manifesto->user_id);
+        $manifesto->edital = Edital::findOrFail($manifesto->edital);
 
         return view('manifestar.documentos')->with('manifesto', $manifesto);
     }
 
     public function documentosPatch(Request $request, string $manifesto_id)
     {
-        if (!auth()->check()) return redirect()->route('login');
-        if (!User::possuiCargos(auth()->user(), ['administrador', 'coordenador'])) return redirect()->route('home');
+        $this->validate($request, [
+            'status_pontuacao' => 'required',
+            'status_comprovante' => 'required',
+        ]);
 
         $manifesto = ManifestoInteresse::findOrFail($manifesto_id);
 
-        $manifesto->status_pontuacao = $request->status_pontuacao;
-        $manifesto->status_comprovante = $request->status_comprovante;
+        $manifesto->update([
+            'status_pontuacao' => $request->status_pontuacao,
+            'status_comprovante' => $request->status_comprovante,
+        ]);
 
         $manifesto->save();
 
         session()->flash('success', 'Documentos do manifesto atualizados com sucesso!');
         return redirect()->route('manifestar.show', $manifesto->id);
+    }
+
+    /**
+     * Faz o upload de um arquivo e retorna o nome do arquivo gerado.
+     */
+    private function uploadFile($file, $destinationPath)
+    {
+        $extension = $file->extension();
+        $anexoName = md5($file->getClientOriginalName() . strtotime("now")) . "." . $extension;
+        $file->move(public_path($destinationPath), $anexoName);
+
+        return $anexoName;
+    }
+
+    public function verificarCargos($roles = [])
+    {
+        if (!User::possuiCargos(auth()->user(), $roles)) {
+            return redirect()->route('login');
+        }
     }
 }

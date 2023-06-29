@@ -32,11 +32,12 @@
             <a class="logo" href="/"><img src="{{ asset('img/logo_fatec/logo_fatec_cor.png') }}" alt="Fatec Itapira"></a>
 
             <!-- Caixa de Pesquisa -->
+            <form action="{{ route('editais.index') }}">
             <div class="pesquisa d-flex align-content-center">
-                <form action="{{ route('editais.index') }}">
+
                     <input type="search" class="caixa-pesquisa" name="numero_edital" placeholder="Pesquisar numero de edital">
                     <button type="submit">Pesquisar</button>
-                </form>
+
             </div>
 
             <!-- Botões de Autenticação e Perfil -->
@@ -72,8 +73,8 @@
 
                 <select id="tfiltro-vaga" class="form-select btn" name="vaga">
                     <option value="">Tipo de Vaga</option>
-                    <option value="determinada">Determinada</option>
-                    <option value="indeterminada">Indeterminada</option>
+                    <option value="D">Determinada</option>
+                    <option value="I">Indeterminada</option>
                 </select>
 
                 <select id="filtro-status" class="form-select btn" name="status">
@@ -85,6 +86,7 @@
             </div>
         </section>
         <!-- FIM Filtros -->
+        </form>
     </header>
     <!-- FIM Cabeçalho Principal -->
 

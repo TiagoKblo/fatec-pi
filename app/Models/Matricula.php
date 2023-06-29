@@ -9,10 +9,20 @@ class Matricula extends Model
 {
     use HasFactory;
 
-    // nome da tabela
+    /**
+     * O nome da tabela associada ao modelo.
+     *
+     * @var string
+     */
     protected $table = 'matriculas';
 
-    // Uma matricula pertence a um usuário
+    /**
+     * Define a relação entre Matricula e User.
+     *
+     * Uma matrícula pertence a um usuário.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);

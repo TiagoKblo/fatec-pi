@@ -10,10 +10,12 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Os atributos que são atribuíveis em massa.
      *
      * @var array<int, string>
      */
@@ -24,7 +26,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Os atributos que devem ser ocultados na serialização.
      *
      * @var array<int, string>
      */
@@ -34,7 +36,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * Os atributos que devem ser convertidos para tipos específicos.
      *
      * @var array<string, string>
      */
@@ -43,25 +45,40 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // Um usuário tem uma matrícula
-    // Uma matrícula pertence a um usuário
+    /**
+     * Define a relação entre User e Matricula.
+     *
+     * Um usuário tem uma matrícula.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function matricula()
     {
         return $this->hasOne(Matricula::class);
     }
 
-    // Um usuário pode fazer um ou mais manifestos de interesse
-    // Um manifesto de interesse pode ser feito por um ou mais usuários
+    /**
+     * Define a relação entre User e ManifestoInteresse.
+     *
+     * Um usuário pode fazer um ou mais manifestos de interesse.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function manifestos()
     {
         return $this->belongsToMany(ManifestoInteresse::class);
     }
 
-   
+    /**
+     * Verifica se um usuário possui os cargos especificados.
+     *
+     * @param  User  $usuario
+     * @param  string|string[]  $cargos
+     * @return bool
+     */
     public static function possuiCargos(User $usuario, $cargos)
-{
-    $cargos = array_map('strtoupper', (array) $cargos);
-    return in_array(strtoupper($usuario->matricula->cargo), $cargos);
-}
-
+    {
+        $cargos = array_map('strtoupper', (array) $cargos);
+        return in_array(strtoupper($usuario->matricula->cargo), $cargos);
+    }
 }

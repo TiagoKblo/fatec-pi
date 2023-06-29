@@ -16,11 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect(route('editais.index'));
-});
-
-
+Route::redirect('/', '/editais');
 
 Route::middleware('auth')->group(function () {
     Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,14 +24,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/perfil', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('editais', EditalController::class);
-Route::resource('manifestar', ManifestarController::class);
-
 Route::get('gerenciar-editais', [EditalController::class, 'gerenciar'])->name('editais.gerenciar');
 Route::get('gerenciar-usuarios', [DashboardController::class, 'usuarios'])->name('dashboard.usuarios');
 Route::get('manifestar/{id}/documentos', [ManifestarController::class, 'documentos'])->name('manifestar.documentos');
 
-
-Route::resource('dashboard', DashboardController::class)->name('dashboard.index', 'dashboard');
+Route::resource('editais', EditalController::class);
+Route::resource('manifestar', ManifestarController::class);
+Route::resource('dashboard', DashboardController::class)->only(['index'])->names([
+    'index' => 'dashboard',
+]);
 
 require __DIR__ . '/auth.php';
